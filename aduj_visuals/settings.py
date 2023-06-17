@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["8000-johawill-adujvisuals-m8kt0b3n7iq.ws-eu99.gitpod.io"]
+ALLOWED_HOSTS = ["8000-johawill-adujvisuals-m8kt0b3n7iq.ws-eu100.gitpod.io"]
 
 
 # Application definition
@@ -49,6 +49,9 @@ INSTALLED_APPS = [
 
     # Home app
     'home',
+
+    # Products app
+    'products',
 ]
 
 MIDDLEWARE = [
