@@ -22,11 +22,11 @@ Products
             {% for product in products %}
             <div class="col-lg-4 col-md-12 col-sm-12 mb-3 ">
                 <div class="card ml-auto mr-auto mb-3" style="max-width:400px; height: fit-content;">
-                    <a href="{{ product.get_absolute_url }}">
-                        <img src="{{ product.image.url}}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}">
                     </a>
                     <div class="p-2 mt-2">
-                        <a href="">
+                        <a href="{% url 'product_detail' product.id %}">
                             <h6 class="card-title"><strong> {{ product.name|capfirst }}</strong></h6>
                         </a>
                     </div>
