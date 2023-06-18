@@ -14,6 +14,67 @@ Products
 
 {% block content %}
 
- {{products}}
+    <div class="container-fluid mb-auto">
+        <div class="row">
+            <div class="col-12 mb-3 mt-2">
+                <h4> <u>All products</u></h4>
+            </div>
+            {% for product in products %}
+            <div class="col-lg-4 col-md-12 col-sm-12 mb-3 ">
+                <div class="card ml-auto mr-auto mb-3" style="max-width:400px; height: fit-content;">
+                    <a href="{{ product.get_absolute_url }}">
+                        <img src="{{ product.image.url}}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                    </a>
+                    <div class="p-2 mt-2">
+                        <a href="">
+                            <h6 class="card-title"><strong> {{ product.name|capfirst }}</strong></h6>
+                        </a>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% if product.category %}
+                        <li class="list-group-item p-2"><strong>Category: </strong>{{ product.category|capfirst }}
+                        </li>
+                        {% endif %}
+                        {% if product.model_name %}
+                        <li class="list-group-item p-2"><strong>Model:
+                            </strong>{{ product.model_name|capfirst }}</li>
+                        {% endif %}
+                        <li class="list-group-item p-2"><strong>Size: </strong>{{ product.size  }}</li>
+                        <li class="list-group-item p-2"><strong>Price: </strong>£{{ product.price }}</li>
+                        <li class="list-group-item p-2">
+                            <a href="{{ product.get_absolute_url }}" class="btn bg-dark text-white rounded-1 w-100 mt-1"> View Product </a>
+                        </li>
+                        <li class="list-group-item p-0">
+                            <!--Editing for superusers-->
+                        </li>
+                    </ul>                    
+                    <!-- Modal -->
+                    <div class="modal fade mb-auto" id="staticBackdrop" data-backdrop="static"
+                        data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel"><strong>Are you sure you
+                                            want to delete this product?</strong></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <small>Warning! You can't undo this action.</small>
+                                </div>
+                                <div class="modal-footer">
+                                    <!--<delete products</a>-->
+                                    <a href="{% url 'products'%}" class=" btn bg-dark text-white rounded-1"> No </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}
