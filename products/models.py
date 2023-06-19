@@ -11,7 +11,7 @@ product_sizes = (
 
 class Category(models.Model):
 
-    catergory_name = models.CharField(max_length=254)
+    category_name = models.CharField(max_length=254)
 
     class Meta:
         verbose_name_plural = "categories"
