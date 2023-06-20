@@ -17,7 +17,16 @@ Products
     <div class="container-fluid mb-auto">
         <div class="row">
             <div class="col-12 mb-3 mt-2">
-                <h4> <u>All products</u></h4>
+                <h4 class="text-center"><strong> <u>Products</u> </strong></h4>
+
+                <div class="col-12 col-md-6 order-md-first">
+                    <p class="text-muted mt-3 text-center text-md-left">
+                        {% if search_term or current_categories != 'None_None' %}
+                            <span class="small"><a href="{% url 'products' %}">Products Home</a> | </span>
+                        {% endif %}
+                        {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+                    </p>
+                </div>
             </div>
             {% for product in products %}
             <div class="col-lg-4 col-md-12 col-sm-12 mb-3 ">
@@ -32,7 +41,7 @@ Products
                     </div>
                     <ul class="list-group list-group-flush">
                         {% if product.category %}
-                        <li class="list-group-item p-2"><strong>Category: </strong>{{ product.category|capfirst }}
+                        <li class="list-group-item p-2"><strong>Category: </strong><span class="badge badge-info">{{ product.category|capfirst }}</span>
                         </li>
                         {% endif %}
                         {% if product.model_name %}
