@@ -52,6 +52,9 @@ INSTALLED_APPS = [
 
     # Products app
     'products',
+
+    # Other apps
+    'mathfilters',
 ]
 
 MIDDLEWARE = [
