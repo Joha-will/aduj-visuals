@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 product_sizes = (
 
@@ -14,10 +15,10 @@ class Category(models.Model):
     category_name = models.CharField(max_length=254)
 
     class Meta:
-        verbose_name_plural = "categories"
+        verbose_name_plural = "Categories"
 
     def __str__(self):
-        return self.catergory_name
+        return self.category_name
 
 
 class Product(models.Model):

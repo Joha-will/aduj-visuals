@@ -4,12 +4,15 @@
             <li class="d-inline p-2">
                 <a href="{% url 'products' %}" class="btn-hover clr-grey">Shop</a>
             </li>
-            {% for category in categories %}
             <li class="d-inline p-2">
-                <a class="btn-hover clr-grey"
-                    href="">{{ category.category_name | capfirst }}</a>
+                <a class="btn-hover clr-grey" href="{% url 'products' %}?category=Portraits">Portraits</a>
             </li>
-            {% endfor %}
+            <li class="d-inline p-2">
+                <a class="btn-hover clr-grey" href="{% url 'products' %}?category=Landscapes">Landscapes</a>
+            </li>
+            <li class="d-inline p-2">
+                <a class="btn-hover clr-grey" href="{% url 'products' %}?category=Weddings">Weddings</a>
+            </li>
         </ul>
     </div>
 </nav>
