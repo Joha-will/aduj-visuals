@@ -56,7 +56,7 @@
                 <form class="form update-form" method="POST" action="">
                   <label>Qty:</label>
                   {% csrf_token %}
-                  <select id="" name="quantity">
+                  <select id="selected_{{product.id}}" name="quantity">
                     <option selected> {{item.quantity}}</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
