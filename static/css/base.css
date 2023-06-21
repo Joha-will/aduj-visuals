@@ -16,3 +16,27 @@ body {
     color: #4C4C4C;
 }
 
+
+/* ------------------------------- Toasts section */
+
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 999999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 0;
+}
+
+.toast-body {
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
