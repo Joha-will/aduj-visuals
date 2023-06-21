@@ -97,3 +97,10 @@
     </div>
   </div>
 {% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+
+<script src="{% static 'basket/js/basket.js' %}"></script>
+    
+{% endblock %} 
