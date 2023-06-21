@@ -68,7 +68,7 @@
                 <a class="update-button text-white inline-flex btn bg-dark rounded-1 ">
                   <small>Update</small>
                 </a>
-                <a href=""
+                <a href=" {% url 'remove_product' item.product_id %}"
                   class="remove-button text-white inline-flex btn bg-logo-red rounded-1"
                   data-id="{{ item.product_id }}"><small>Remove</small>
                 </a>

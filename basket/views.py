@@ -33,3 +33,13 @@ def update_basket(request, product_id):
         basket.pop(product_id)
     request.session['basket'] = basket
     return redirect(reverse('view_basket'))
+
+
+def remove_product(request, product_id):
+    """ A view that gives users the ability to remove products from basket"""
+    product = get_object_or_404(Product, pk=product_id)
+    basket = request.session.get('basket', {})
+    if product_id in list(basket.keys()):
+        del basket[product_id]
+    request.session['basket'] = basket
+    return redirect(reverse('view_basket'))
