@@ -19,5 +19,17 @@ def add_to_basket(request, product_id):
     else:
         basket[product_id] = product_quantity
     request.session['basket'] = basket
-
     return redirect(redirect_url)
+
+
+def update_basket(request, product_id):
+    """View that allow's users to update a product quantity"""
+    product = get_object_or_404(Product, pk=product_id)
+    product_quantity = int(request.POST.get('quantity'))
+    basket = request.session.get('basket', {})
+    if product_quantity > 0:
+        basket[product_id] = product_quantity
+    else:
+        basket.pop(product_id)
+    request.session['basket'] = basket
+    return redirect(reverse('view_basket'))
