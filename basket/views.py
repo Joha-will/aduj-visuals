@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib import messages
 from products.models import Product
 
@@ -39,10 +39,15 @@ def update_basket(request, product_id):
 
 def remove_product(request, product_id):
     """ A view that gives users the ability to remove products from basket"""
-    product = get_object_or_404(Product, pk=product_id)
-    basket = request.session.get('basket', {})
-    if product_id in list(basket.keys()):
-        del basket[product_id]
-        messages.info(request, f'{product.name} removed from basket!')
-    request.session['basket'] = basket
-    return redirect(reverse('view_basket'))
+    try:
+        product = get_object_or_404(Product, pk=product_id)
+        basket = request.session.get('basket', {})
+        if product_id in list(basket.keys()):
+            del basket[product_id]
+            messages.info(request, f'{product.name} removed from basket!')
+        request.session['basket'] = basket
+        return redirect(reverse('view_basket'))
+
+    except Exception as e:
+        messages.error(request, f"Error remove product {e}")
+        return HttpResponse(status=500)
