@@ -18,6 +18,7 @@ def add_to_basket(request, product_id):
         basket[product_id] += product_quantity
     else:
         basket[product_id] = product_quantity
+    messages.success(request, "Product added to basket")
     request.session['basket'] = basket
     return redirect(redirect_url)
 
@@ -29,6 +30,7 @@ def update_basket(request, product_id):
     basket = request.session.get('basket', {})
     if product_quantity > 0:
         basket[product_id] = product_quantity
+        messages.info(request, f'Quantity updated to ({product_quantity})')
     else:
         basket.pop(product_id)
     request.session['basket'] = basket
@@ -41,5 +43,6 @@ def remove_product(request, product_id):
     basket = request.session.get('basket', {})
     if product_id in list(basket.keys()):
         del basket[product_id]
+        messages.info(request, f'{product.name} removed from basket!')
     request.session['basket'] = basket
     return redirect(reverse('view_basket'))
