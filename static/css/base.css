@@ -40,3 +40,42 @@ body {
     overflow-y: scroll;
 }
 
+/** -------------------------------------Background colours and Colours **/
+
+.clr-grey {
+    color: #8C8C8C !important;
+}
+
+.clr-red {
+    color: #C35355;
+}
+
+.bg-brown {
+
+    background-color: #BAA89B;
+
+}
+
+.bg-black {
+    background-color: black;
+}
+
+.bg-logo-red {
+    background-color: #C35355 !important;
+}
+
+.bg-grey, hr {
+
+    background-color: #E6E4E7 !important;
+
+}
+
+.bg-orange {
+    background-color: #FF862A;
+}
+
+.footer-bg-clr {
+
+    background-color: #1A191B;
+}
+
