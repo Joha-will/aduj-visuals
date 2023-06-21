@@ -53,8 +53,16 @@ INSTALLED_APPS = [
     # Products app
     'products',
 
+    # Basket app
+    'basket',
+
+    # Checkout app
+    'checkout',
+
     # Other apps
     'mathfilters',
+
+
 ]
 
 MIDDLEWARE = [

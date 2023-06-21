@@ -120,7 +120,7 @@
                 <a href="{% url 'view_basket' %}" class="nav-link clr-grey btn btn-outline-secondary float-left">
                   <i class="fa-solid fa-basket-shopping"></i>
                     {% if product_count %}
-                      <span class="inline-flex badge badge-info"></span>
+                      <span class="inline-flex badge badge-info">{{product_count}}</span>
                     {% else %}
                     {% endif %}
                 </a>
