@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load mathfilters %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block extra_title %} 
+Checkout
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid mb-auto">
+        <h2> Checkout</h2>
+        <hr>
+        <br>
+        <div class="row">
+            <div class="col-lg-6 col-md-12 mb-3">
+                <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                    {% csrf_token %}
+                    <fieldset>
+                        <legend>Your information </legend>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12"> {{ order_form.full_name | as_crispy_field }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 col-sm-12">{{ order_form.email | as_crispy_field }}</div>
+                                <div class="col-6 col-sm-12">{{ order_form.phone_number | as_crispy_field }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">{{ order_form.address1 | as_crispy_field }}</div>
+                                <div class="col-12">{{ order_form.address2 | as_crispy_field }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 col-sm-12">{{ order_form.city | as_crispy_field }}</div>
+                                <div class="col-6 col-sm-12">{{ order_form.postal_code | as_crispy_field }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">{{ order_form.county | as_crispy_field }}</div>
+                                <div class="col-12">{{ order_form.country | as_crispy_field }}</div>
+                            </div>
+                            <div class="row">
+                                {% if request.user.is_authenticated %}
+                                <label for="save-details" > Remember my details</label>
+                                <input id="save-details" type="checkbox" name="save-details" checked>
+                                {% else %}
+                                <span class="mb-0 float-right">Login to save your details for next time <a href="{% url 'account_login' %}">Login</a>, or 
+                                    <a href="{% url 'account_signup' %}">sign up</a>
+                                </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Payment</legend>
+                        <div class="container">
+                            <div class="row">
+                                <div id="payment-element" class="col-12 border-bottom p-1 ml-1">
+                                    <!-- Elements will create form elements here -->
+                                </div>
+                                <br><br>
+                                <div id="error-message">
+                                    <!-- Display error message to your customers here -->
+                                </div>
+                                <!-- Pass the client secret to the view so we can get the payment intent id -->
+                                <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                                <button id="submit-button" type="submit"
+                                    class="p-1 btn bg-dark text-white border-dark rounded-1 ml-auto">Complete
+                                    Order</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="col-lg-4 col-sm-12 ml-lg-auto ">
+                <fieldset>
+                    <div class="row">
+                        <div class="col-5 mr-auto">
+                            <h6>Your basket <small class="font-italic">({{product_count}})</small></h6>
+                        </div>
+                        <div class="col-4 ml-auto">
+                            <div class="text-center p-1">
+                                <a href="{ url 'view_basket' }"
+                                    class="btn bg-dark text-white border-dark rounded-1 w-100">
+                                    Edit
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        {% for item in basket_items %}
+                        <div class="col-10 ml-3 d-inline-flex pt-2">
+                            <a href="{{ item.product.image.url}}">
+                                <img src="{{ item.product.image.url}}" width="40" height="50" class="rounded mr-2"
+                                    alt="{{ item.product.name }}">
+                            </a>
+                            <div class="d-block mt-0">
+                                <div class="font-weight-bold">{{ item.product.name }}</div>
+                                <div class="font-weight-bold"> Size:
+                                    <span>
+                                        <small>
+                                            {{ item.product.size }}
+                                        </small>
+                                    </span>
+                                </div>
+                                <div class="font-weight-bold"> Qty: {{item.quantity}}</div>
+                            </div>
+                            <hr>
+                        </div>
+                        {% endfor %}
+                        <div class="col-12 m-0">
+                            <hr>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span>Subtotal:</span>
+                                </div>
+                                <div class="col-6">
+                                    <span> £ {{total }}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span> Delivery: </span>
+                                </div>
+                                <div class="col-6">
+                                    <span> £ {{ delivery | floatformat:2}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span><strong>Order Total: </strong></span>
+                                </div>
+                                <div class="col-6">
+                                    <span> £ {{order_total | floatformat:2}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
