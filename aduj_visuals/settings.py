@@ -59,6 +59,9 @@ INSTALLED_APPS = [
     # Checkout app
     'checkout',
 
+    # Profile Management App
+    'profile_management',
+
     # Other apps
     'mathfilters',
     # Django Crispy-Forms
