@@ -52,3 +52,34 @@ const appearance = {
 
 const card = elements.create('card', { appearance: appearance});
 card.mount('#payment-element');
+
+// Handle validation errors on card element
+
+card.addEventListener('change', function (e) {
+
+  var errorMsg = document.getElementById('error-message');
+
+  if (e.error) {
+
+    $(errorMsg).html(`<p class="alert alert-danger" role="alert"> <i class="fa-solid fa-square-xmark"></i> ${e.error.message} </p>`);
+
+  } else {
+    errorMsg.textContent = '';
+  }
+
+})
+
+
+// Form Submit js
+
+const form = document.getElementById('payment-form');
+
+form.addEventListener('submit', function (event) {
+
+  event.preventDefault();
+
+  card.update({'disabled': true});
+
+  $('#submit-button').attr('disable', true);
+
+  $('#payment-form').fadeToggle(100);
