@@ -83,3 +83,97 @@ form.addEventListener('submit', function (event) {
   $('#submit-button').attr('disable', true);
 
   $('#payment-form').fadeToggle(100);
+
+  $('.spinner-container').addClass('show-spinner');
+
+  var saveDetails = Boolean($('#save-details').attr('checked'));
+
+  // Get {% csrf_token %} from form element
+
+  var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+
+  var postData = {
+
+    'csrfmiddlewaretoken': csrfToken,
+
+    'client_secret': clientSecret,
+
+    'save_details': saveDetails,
+  };
+
+  var url = '/checkout/cache_checkout_data/';
+
+  $.post(url, postData).done(function() {
+
+    stripe.confirmCardPayment(clientSecret, {
+
+      payment_method: {
+  
+        card: card,
+        
+        billing_details: {
+
+          name: $.trim(form.full_name.value),
+          phone: $.trim(form.phone_number.value),
+          email: $.trim(form.email.value),
+          address: {
+            line1: $.trim(form.address1.value),
+            line2: $.trim(form.address2.value),
+            city: $.trim(form.city.value),
+            state: $.trim(form.county.value),
+            country: $.trim(form.country.value),
+  
+          }
+        }
+  
+      },
+  
+      shipping: {
+        name: $.trim(form.full_name.value),
+        phone: $.trim(form.phone_number.value),
+        address: {
+          line1: $.trim(form.address1.value),
+          line2: $.trim(form.address2.value),
+          city: $.trim(form.city.value),
+          state: $.trim(form.county.value),
+          country: $.trim(form.country.value),
+          postal_code: $.trim(form.postal_code.value),
+  
+        }
+      },
+  
+    }).then(function(result) {
+  
+      if (result.error) {
+  
+        const messageContainer = document.querySelector('#error-message');
+  
+        $(messageContainer).html(`<p class="alert alert-danger" role="alert"> <i class="fa-solid fa-square-xmark"></i> ${result.error.message} </p>`);
+  
+        $('#payment-form').fadeToggle(100);
+  
+        $('.spinner-container').removeClass('show-spinner');
+  
+        card.update({'disabled': false});
+        
+        $('#submit-button').attr('disable', false);
+  
+      } else {
+  
+        if (result.paymentIntent.status === 'succeeded'){
+  
+          form.submit();
+          
+      }
+  
+      }
+    });
+
+  }).fail(function() {
+
+    location.reload();
+
+  })
+
+  
+});
