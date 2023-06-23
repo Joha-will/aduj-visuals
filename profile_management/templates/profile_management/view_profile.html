@@ -75,3 +75,10 @@
     </div>
 
 {% endblock %}
+
+{% block postloadjs %}
+
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'profile_management/js/profile_management.js' %}"></script>
+    
+{% endblock %} 
