@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'profile_management/css/profile_management.css' %}">
+
+{% endblock %}
+
+{% block extra_title %} 
+ My Profile
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid mb-auto">
+        <h2> My Profile</h2>
+        <hr>
+        <br>
+        <div class="row">
+            <div class="col-12 col-lg-6 mr-5">
+                <fieldset>
+                    <legend><u>Default Delivery Information</u></legend>
+                    <br>
+                    <form action="{% url 'view_profile' %}" method="POST" id="profile-update-form">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit"
+                            class="p-1 btn bg-dark text-white border-dark rounded-1 float-right">Update
+                            Information</button>
+                    </form>
+                </fieldset>
+            </div>
+            <div class="col-12 col-lg-4 col-sm-12 ml-5 p-0 m-0">
+                <fieldset>
+                    <legend><u>Order History</u> </legend>
+                    {% if orders %}
+                    <div id="order-history">
+                        {% for order in orders %}
+                        <div class="list-group">
+                            <a href="{% url 'order_history' order.order_number %}"
+                                class="list-group-item list-group-item-action mb-2">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1"> Order no:
+                                        <small><u>{{ order.order_number|truncatechars:10 }}</u></small></p>
+                                    <small>{{ order.date_ordered }}</small>
+                                </div>
+                                {% for item in order.orderitems.all %}
+                                <div class="row">
+                                    <div class="col-2">
+                                        <img src="{{ item.product.image.url}}" width="40" height="50"
+                                            class="rounded mr-2" alt="{{ item.product.name }}">
+                                    </div>
+                                    <div class="col-10 d-block mt-1">
+                                        <p class="mb-1">Name: <small>{{ item.product.name }}</small></p>
+                                        <p class="mb-1">Size: <small>{{ item.product.size }}</small></p>
+                                    </div>
+                                </div>
+                                <p class="mb-1">Qty: <small>{{ item.quantity }}</small></p>
+                                {% endfor %}
+                                <small>Order total: £ {{ order.order_total }}</small>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </fieldset>
+                {% else %}
+                    <div class="">
+                        <h6>No orders History</h6>
+                    </div>
+                {% endif  %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
