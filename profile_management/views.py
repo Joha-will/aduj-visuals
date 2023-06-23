@@ -29,3 +29,17 @@ def view_profile(request):
         'orders': orders,
     }
     return render(request, template, context)
+
+
+def order_history(request, order_number):
+    """ A view that renders users order history """
+    order = get_object_or_404(Order, order_number=order_number)
+    messages.info(request, (
+        f'This is one of your previous order. Here is the order number\
+            {order_number}. A confirmation email was sent to the order date'
+    ))
+    context = {
+        'order': order,
+        'from_profile': True,
+    }
+    return render(request, 'checkout/checkout_success.html', context)

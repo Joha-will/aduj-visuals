@@ -18,3 +18,17 @@
 
     color: #CFCFCF !important;
 }
+
+#order-history {
+
+    height: 500px;
+
+    overflow-y: scroll;
+}
+
+.list-group a:hover  {
+
+    background-color: #C35355 !important;
+
+    color:white; 
+}

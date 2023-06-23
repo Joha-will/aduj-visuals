@@ -91,12 +91,15 @@ Checkout success
     <div class="navbar navbar-expand-lg bg-light row mb-0">
         <div>
             <ul class="ml-100">
-                <li class="d-inline">
-                    <a href="{% url 'products' %}" class="btn-hover clr-grey"><i class="fa-solid fa-angle-left fa-xl"></i> Back to shop /</a>
-                </li>
-                <li class="d-inline">
-                    <a class="btn-hover clr-grey" href="">My profile</a>
-                </li>
+                {% if from_profile %}
+                    <li class="d-inline">
+                        <a class="btn-hover clr-grey" href="{% url 'view_profile' %}"> <i class="fa-solid fa-arrow-left"></i> &nbsp; Back to my profile </a>
+                    </li>
+                {% else %}
+                    <li class="d-inline">
+                        <a href="{% url 'products' %}" class="btn-hover clr-grey"><i class="fa-solid fa-arrow-left"></i> &nbsp; Back to shop </a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>

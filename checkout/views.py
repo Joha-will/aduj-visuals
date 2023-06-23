@@ -1,12 +1,14 @@
 from django.shortcuts import (render, redirect, reverse, get_object_or_404,
                               HttpResponse)
 from django.views.decorators.http import require_POST
-from .forms import OrderForm
-from .models import OrderItem, Order
+from .forms import OrderForm, Order
+from .models import OrderItem
 from products.models import Product
 from django.contrib import messages
 from django.conf import settings
 from basket.contexts import basket_contents
+from profile_management.models import UserProfile
+from profile_management.forms import UserProfileForm
 import json
 import stripe
 
