@@ -16,6 +16,9 @@ body {
     color: #4C4C4C;
 }
 
+input[name='q']::placeholder {
+    color: #CFCFCF !important;
+}
 
 /* ------------------------------- Toasts section */
 
