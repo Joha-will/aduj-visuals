@@ -59,8 +59,11 @@ INSTALLED_APPS = [
     # Checkout app
     'checkout',
 
-    # Profile Management App
+    # Profile Management app
     'profile_management',
+
+    # Store Management app
+    'store_management'
 
     # Other apps
     'mathfilters',
