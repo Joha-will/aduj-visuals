@@ -3,10 +3,11 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from products.models import Product
 from .models import Order, OrderItem
+from profile_management.models import UserProfile
+from django.core.mail import send_mail
 
 import time
 import json
-import stripe
 
 
 class StripeWH_Handler:
