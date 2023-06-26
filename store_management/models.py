@@ -38,3 +38,16 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Newsletter(models.Model):
+    """Newsletter model"""
+    email = models.EmailField(null=True)
+    date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        """Order the result sent_on descending"""
+        ordering = ['-date']
+
+    def __str__(self):
+        return self.email
