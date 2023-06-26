@@ -193,3 +193,14 @@ def store_inbox(request):
     return render(request, 'store_management/store_inbox.html', context)
 
 
+@login_required
+def delete_message(request, message_id):
+    """ Delete messages from the store's inbox"""
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners are allowed\
+             on this page!')
+        return redirect(reverse('home'))
+    mail = get_object_or_404(Contact, pk=message_id)
+    mail.delete()
+    messages.info(request, 'Message deleted successfully.')
+    return redirect(reverse('store_inbox'))

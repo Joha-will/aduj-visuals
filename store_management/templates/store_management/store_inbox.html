@@ -54,7 +54,7 @@
                                         <small>Warning! You can't undo this action.</small>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href=""
+                                        <a href="{% url 'delete_message' mail.id %}"
                                             class=" btn bg-logo-red rounded-1 text-white">
                                             Yes</a>
                                         <a href="{% url 'store_inbox'%}" class=" btn bg-dark text-white rounded-1"> No

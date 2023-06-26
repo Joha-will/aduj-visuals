@@ -16,5 +16,7 @@ urlpatterns = [
           name='delete_comment'),
      path('contact_form/', views.contact_form, name='contact_form'),
      path('store_inbox/', views.store_inbox, name='store_inbox'),
+     path('delete_message/<int:message_id>/', views.delete_message,
+          name='delete_message'),
 
 ]
