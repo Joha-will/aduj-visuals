@@ -19,5 +19,6 @@ urlpatterns = [
      path('delete_message/<int:message_id>/', views.delete_message,
           name='delete_message'),
      path('newsletter/', views.newsletter, name='newsletter'),
+     path('view_newsletter/', views.view_newsletter, name='view_newsletter'),
 
 ]

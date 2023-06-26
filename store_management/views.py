@@ -224,3 +224,17 @@ def newsletter(request):
         'form': form,
     }
     return context
+
+
+@login_required
+def view_newsletter(request):
+    """ A view that renders users comments"""
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners\
+             are allowed on this page!')
+        return redirect(reverse('home'))
+    subscribers = Newsletter.objects.all()
+    context = {
+        'subscribers': subscribers,
+    }
+    return render(request, 'store_management/view_newsletter.html', context)
