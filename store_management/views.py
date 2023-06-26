@@ -49,7 +49,8 @@ def edit_product(request, product_id):
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing this product\
-             ({ product.name })')
+             ({ product.name }). All products added to the store\
+                 must have an image.')
     context = {
         'form': form,
         'product': product,
