@@ -98,3 +98,17 @@ def add_comment(request, product_id):
         'user_comment': user_comment,
     }
     return render(request, 'store_management/add_comment.html', context)
+
+
+@login_required
+def view_comments(request):
+    """ A view that renders users comments"""
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners\
+             are allowed on this page!')
+        return redirect(reverse('home'))
+    comments = Comment.objects.all()
+    context = {
+        'comments': comments,
+    }
+    return render(request, 'store_management/view_comments.html', context)

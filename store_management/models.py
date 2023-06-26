@@ -19,3 +19,5 @@ class Comment(models.Model):
 
     def __str__(self):
         return str(self.content) + ' by ' + str(self.user_name)
+
+
