@@ -2,7 +2,8 @@ from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from products.models import Product
-from .forms import ProductForm, CommentForm, ApproveCommentForm, ContactForm, NewsletterForm
+from .forms import (ProductForm, CommentForm, ApproveCommentForm, ContactForm,
+                    NewsletterForm)
 from .models import Comment, Contact, Newsletter
 
 
@@ -155,7 +156,7 @@ def delete_comment(request, comment_id):
 
 
 @login_required
-def contact_form(request):
+def contact_us(request):
     """ Contact form view """
     contact_form = ContactForm()
     if request.method == 'POST':

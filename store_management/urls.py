@@ -14,7 +14,7 @@ urlpatterns = [
           name='approve_comment'),
      path('delete_comment/<int:comment_id>/', views.delete_comment,
           name='delete_comment'),
-     path('contact_form/', views.contact_form, name='contact_form'),
+     path('contact_us/', views.contact_us, name='contact_us'),
      path('store_inbox/', views.store_inbox, name='store_inbox'),
      path('delete_message/<int:message_id>/', views.delete_message,
           name='delete_message'),
@@ -22,5 +22,4 @@ urlpatterns = [
      path('view_newsletter/', views.view_newsletter, name='view_newsletter'),
      path('delete_subscriber/<int:email_id>/', views.delete_subscriber,
           name='delete_subscriber'),
-
 ]
