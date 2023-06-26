@@ -1,6 +1,7 @@
 from django import forms
 from products.models import Product
 from .widgets import CustomClearableFileInput
+from .models import Comment
 
 
 class ProductForm(forms.ModelForm):
