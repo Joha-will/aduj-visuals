@@ -18,5 +18,6 @@ urlpatterns = [
      path('store_inbox/', views.store_inbox, name='store_inbox'),
      path('delete_message/<int:message_id>/', views.delete_message,
           name='delete_message'),
+     path('newsletter/', views.newsletter, name='newsletter'),
 
 ]

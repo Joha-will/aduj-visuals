@@ -1,9 +1,9 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from products.models import Product, Category
+from products.models import Product
 from .forms import ProductForm, CommentForm, ApproveCommentForm, ContactForm, NewsletterForm
-from .models import Comment, Contact
+from .models import Comment, Contact, Newsletter
 
 
 @login_required

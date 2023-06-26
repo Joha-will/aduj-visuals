@@ -159,7 +159,44 @@
 
     {% endblock %}
 
-    
+    <!-- Footer -->
+    <footer class="container-fluid text-white" id="footer">
+      <div class="row bg-light">
+        <div class="col-12">
+          <div class="d-flex justify-content-center">
+            <a href="https://www.instagram.com/" target="_blank" class="social-link margin-rite" rel="noopener"><i
+                class="fa-brands fa-instagram"></i></a>
+            <a href="https://en-gb.facebook.com/" target="_blank" class="social-link margin-rite" rel="noopener"><i
+                class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/in/joha-wilson-5075a8249/s" target="_blank" class="social-link margin-rite"
+              rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/?lang=en" target="_blank" class="social-link margin-rite" rel="noopener"><i
+                class="fa-brands fa-twitter"></i></a>
+            <a href="https://github.com/Joha-will?tab=repositories" target="_blank" class="social-link"
+              rel="noopener noreferrer"><i class="fa-brands fa-github-alt"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="row bg-brown footer-bg-clr ">
+        <div class="col-8 p-2 mt-auto ">
+          <h4>Subscribe to our letter!</h4>
+          <small>Stay updated with our lastest deals and offers.</small>
+          <form method="POST" action="{% url 'newsletter' %}" class="w-20" style="max-width: 10rem;">
+            {% csrf_token %}
+              <p class="mt-0">{{ form.email}}</p>
+              <button type="submit" class="btn bg-logo-red rounded-1 text-white mt-0 p-1"> Subscribe</button>
+          </form>
+        </div>
+        <div class="col-12 mt-auto">
+          <div class="text-center">
+            <small>&copy; Copyright 2023. Joha Wilson. This project is made for educational purposes only. No
+              commercial revenue is generated from the project.</small>
+          </div>
+        </div>
+      </div>
+      </div>
+    </footer>
+    <!--/ .Footer-->
 
     {% block postloadjs %}
         <script type="text/javascript"> $('.toast').toast('show');</script>    

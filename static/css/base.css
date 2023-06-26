@@ -20,6 +20,30 @@ input[name='q']::placeholder {
     color: #CFCFCF !important;
 }
 
+/** -------------------------------------Footer Section **/
+
+#footer {
+    bottom: 0;
+    position: relative;
+    margin-top: auto;
+    
+}
+
+.social-link {
+    font-size: 2rem;
+    color: #B9B6C8;
+}
+.margin-rite {
+    margin-right: 10rem;
+}
+.social-link:hover {
+    color: #C35355 !important;
+}
+
+.nav-links:hover {
+    color: #C35355 !important;
+}
+
 /* ------------------------------- Toasts section */
 
 .message-container {
