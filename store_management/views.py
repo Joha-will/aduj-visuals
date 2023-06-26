@@ -2,7 +2,7 @@ from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from products.models import Product, Category
-from .forms import ProductForm, CommentForm, ApproveCommentForm, ContactForm
+from .forms import ProductForm, CommentForm, ApproveCommentForm, ContactForm, NewsletterForm
 from .models import Comment, Contact
 
 
@@ -204,3 +204,23 @@ def delete_message(request, message_id):
     mail.delete()
     messages.info(request, 'Message deleted successfully.')
     return redirect(reverse('store_inbox'))
+
+
+def newsletter(request):
+    """ A view that renders a newsletter form """
+    form = NewsletterForm()
+    if request.method == "POST":
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Subscribed successfully')
+            return redirect(reverse('home'))
+        else:
+            messages.error(request, 'Unable to send message.\
+                            Please check form is valid.')
+    else:
+        form = NewsletterForm()
+    context = {
+        'form': form,
+    }
+    return context

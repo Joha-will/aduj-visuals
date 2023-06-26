@@ -1,7 +1,7 @@
 from django import forms
 from products.models import Product
 from .widgets import CustomClearableFileInput
-from .models import Comment, Contact
+from .models import Comment, Contact, Newsletter
 
 
 class ProductForm(forms.ModelForm):
@@ -89,6 +89,25 @@ class ContactForm(forms.ModelForm):
             'email_address': 'Email',
             'tel_number': 'Tel No.',
             'message': 'Message',
+        }
+        for field in self.fields:
+            placeholder = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].label = False
+
+
+class NewsletterForm(forms.ModelForm):
+    """ A form for users subscribe to newsletter"""
+    class Meta:
+        """ Assign model and fields"""
+        model = Newsletter
+        fields = '__all__'
+        exclude = ('date',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'email': 'Email',
         }
         for field in self.fields:
             placeholder = placeholders[field]
