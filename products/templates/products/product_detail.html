@@ -8,59 +8,100 @@ Product detail
 
 {% block content %}
 
-<div class="container-fluid">
-    <div class="row mt-5 border-bottom border-secondary">
-        <div class="col-lg-5 col-md-12 p-0 text-center mb-5">
-            <div class="p-2">
-                <a href="{{ product.image.url }}" target="_blank"> <img class="img-fluid mx-auto"
-                        alt="{{ product.name }}" src="{{ product.image.url }}"> </a>
+    <div class="container-fluid">
+        <div class="row mt-5 border-bottom border-secondary">
+            <div class="col-lg-5 col-md-12 p-0 text-center mb-5">
+                <div class="p-2">
+                    <a href="{{ product.image.url }}" target="_blank"> <img class="img-fluid mx-auto"
+                            alt="{{ product.name }}" src="{{ product.image.url }}"> </a>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-5 col-md-12 p-0 m-auto">
-            <h1 class="p-2"> {{product.name|capfirst}} </h1>
-            {% if request.user.is_superuser %}
-            <small class="ml-3">
-                <a href="{% url 'edit_product' product.id %}">Edit</a> |
-                <a class="text-danger" href="" data-toggle="modal" data-target="#staticBackdrop">Delete</a>
-            </small>
-            {% endif %}
-            <hr>
-            <div class="border">
-                <div class="col border-bottom">
-                    <div class="row p-3 border-bottom">
-                        <div class="col-12"> <strong>Price:</strong> £{{product.price}} </div>
-                    </div>
-                    <div class="row p-3 border-bottom">
-                        <div class="col-12"><strong>Size:</strong> {{product.size}}</div>
-                    </div>
-                    <div class="row p-3 border-bottom">
-                        <div class="col-12">
-                            <form method="POST" action="{% url 'add_to_basket' product.id %}">
-                                <label><strong>Qty:</strong></label>
-                                {% csrf_token %}
-                                <select id="selected_{{product.id}}" name="quantity" class="p-2 rounded">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
-                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                                <input type="submit" class="btn bg-dark text-white rounded-1 m-auto"
-                                    value="Add to Basket">
-                            </form>
+            <div class="col-lg-5 col-md-12 p-0 m-auto">
+                <h1 class="p-2"> {{product.name|capfirst}} </h1>
+                {% if request.user.is_superuser %}
+                    <small class="ml-3">
+                        <a href="{% url 'edit_product' product.id %}">Edit</a> |
+                        <a class="text-danger" href="" data-toggle="modal" data-target="#staticBackdrop">Delete</a>
+                    </small>
+                {% endif %}
+                <hr>
+                <div class="border">
+                    <div class="col border-bottom">
+                        <div class="row p-3 border-bottom">
+                            <div class="col-12"> <strong>Price:</strong> £{{product.price}} </div>
                         </div>
-                    </div>
-                    <div class="row p-3">
-                        <div class="col-12">
-                            <p> <strong>About: </strong>{{ product.description }} </p>
+                        <div class="row p-3 border-bottom">
+                            <div class="col-12"><strong>Size:</strong> {{product.size}}</div>
+                        </div>
+                        <div class="row p-3 border-bottom">
+                            <div class="col-12">
+                                <form method="POST" action="{% url 'add_to_basket' product.id %}">
+                                    <label><strong>Qty:</strong></label>
+                                    {% csrf_token %}
+                                    <select id="selected_{{product.id}}" name="quantity" class="p-2 rounded">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                    <input type="submit" class="btn bg-dark text-white rounded-1 m-auto"
+                                        value="Add to Basket">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row p-3">
+                            <div class="col-12">
+                                <p> <strong>About: </strong>{{ product.description }} </p>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <br>
             </div>
-            <br>
         </div>
-
+        <br>
+        <div class="row">
+            <div class="col-lg-5 col-md-12 p-0 m-0">
+                <div>
+                    {% for comment in comments %}
+                    {% if comment %}
+                    <h4> <u>Comments</u></h4>
+                    <br>
+                    <div class="card p-4 mb-2">
+                        <div class="card-header">
+                            {{comment.title}}
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p>{{comment.content}}</p>
+                                <footer class="blockquote-footer"> by {{comment.user_name}} <span
+                                        class="float-right">{{comment.posted_on}}</span></footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                    {% else %}
+                    <p> No comments</p>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <hr>
+            <div class="col-lg-8 col-md-12">
+                {% if request.user.is_authenticated %}
+                <div class="row">
+                    <div class="col-12 mb-2 p-1">
+                        <br>
+                        <fieldset>
+                            <a href="{% url 'add_comment' product.id %}" class="btn bg-dark text-white rounded-1"> Add
+                                comment</a>
+                        </fieldset>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
         <!-- Modal -->
         <div class="modal fade mb-auto" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -86,6 +127,11 @@ Product detail
         </div>
     </div>
 
-</div>
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+
+    <script src="{% static 'products/js/products.js' %}"></script>
 
 {% endblock %}

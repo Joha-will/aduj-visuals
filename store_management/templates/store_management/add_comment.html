@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_title %} 
+Add comment
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid mb-auto ">
+        <h2><strong>Leave a comment below</strong></h2>
+        <hr>
+        <br>
+        <h6 class="text-center"><u> Add a comment </u></h6>
+        <br>
+        <div class="row">
+            <div class="col-lg-6 col-md-12 m-auto">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{comment_form | crispy }}
+                    <div class="float-right">
+                        <button class="btn bg-dark text-white rounded-1" type="submit"> Add Comment </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

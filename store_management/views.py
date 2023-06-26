@@ -1,5 +1,5 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
-from .forms import ProductForm
+from .forms import ProductForm, CommentForm
 from products.models import Product, Category
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -69,3 +69,32 @@ def delete_product(request, product_id):
     product.delete()
     messages.info(request, 'Product deleted successfully.')
     return redirect(reverse('products'))
+
+
+@login_required
+def add_comment(request, product_id):
+    """ A view to comment on store products """
+    product = get_object_or_404(Product, id=product_id)
+    user_comment = None
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            user_comment = comment_form.save(commit=False)
+            user_comment.product = product
+            user_comment.user = request.user
+            user_comment.save()
+            messages.info(request, 'Your comment will be posted here shortly,\
+                once it has been approved.')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Unable to post comment.\
+                            Please check form is valid.')
+    else:
+        comment_form = CommentForm()
+        messages.info(request, f'You are adding a comment to this product\
+             ({ product.name })')
+    context = {
+        'comment_form': comment_form,
+        'user_comment': user_comment,
+    }
+    return render(request, 'store_management/add_comment.html', context)
