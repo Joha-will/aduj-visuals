@@ -20,5 +20,7 @@ urlpatterns = [
           name='delete_message'),
      path('newsletter/', views.newsletter, name='newsletter'),
      path('view_newsletter/', views.view_newsletter, name='view_newsletter'),
+     path('delete_subscriber/<int:email_id>/', views.delete_subscriber,
+          name='delete_subscriber'),
 
 ]

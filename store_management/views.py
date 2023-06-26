@@ -238,3 +238,16 @@ def view_newsletter(request):
         'subscribers': subscribers,
     }
     return render(request, 'store_management/view_newsletter.html', context)
+
+
+@login_required
+def delete_subscriber(request, email_id):
+    """ Delete messages from the store's inbox """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners are allowed on\
+             this page!')
+        return redirect(reverse('home'))
+    email = get_object_or_404(Newsletter, pk=email_id)
+    email.delete()
+    messages.info(request, 'Unsubscribe successfully.')
+    return redirect(reverse('view_newsletter'))
