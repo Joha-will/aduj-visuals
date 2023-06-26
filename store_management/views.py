@@ -3,6 +3,7 @@ from .forms import ProductForm, CommentForm
 from products.models import Product, Category
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from .models import Comment
 
 
 @login_required
