@@ -2,7 +2,7 @@ from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from products.models import Product, Category
-from .forms import ProductForm, CommentForm, ApproveCommentForm
+from .forms import ProductForm, CommentForm, ApproveCommentForm, ContactForm
 from .models import Comment
 
 
@@ -152,3 +152,28 @@ def delete_comment(request, comment_id):
     comment.delete()
     messages.info(request, 'Comment deleted successfully.')
     return redirect(reverse('view_comments'))
+
+
+@login_required
+def contact_form(request):
+    """ Contact form view """
+    contact_form = ContactForm()
+    if request.method == 'POST':
+        contact_form = ContactForm(request.POST)
+        if contact_form.is_valid():
+            customer = contact_form.save(commit=False)
+            customer.user = request.user
+            contact_form.save()
+            messages.info(request, 'Message sent successfully, a member of\
+                staff will get back to you shortly.')
+            return redirect(reverse('home',))
+
+        else:
+            messages.error(request, 'Unable to send message.\
+                            Please check form is valid.')
+    else:
+        contact_form = ContactForm()
+    context = {
+        'contact_form': contact_form,
+    }
+    return render(request, 'store_management/contact_form.html', context)

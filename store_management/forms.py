@@ -1,12 +1,13 @@
 from django import forms
 from products.models import Product
 from .widgets import CustomClearableFileInput
-from .models import Comment
+from .models import Comment, Contact
 
 
 class ProductForm(forms.ModelForm):
     """ A form to add a new products """
     class Meta:
+        """ Assign model and fields"""
         model = Product
         fields = '__all__'
 
@@ -31,7 +32,9 @@ class ProductForm(forms.ModelForm):
 
 class CommentForm(forms.ModelForm):
     """ A form for users to make commments """
+
     class Meta:
+        """ Assign model and fields"""
         model = Comment
         fields = ('title', 'user_name', 'content', )
 
@@ -51,6 +54,7 @@ class CommentForm(forms.ModelForm):
 class ApproveCommentForm(forms.ModelForm):
     """ A form for admins to approve comments"""
     class Meta:
+        """ Assign model and fields"""
         model = Comment
         fields = ('title', 'user_name', 'content', 'approved',)
 
@@ -68,3 +72,25 @@ class ApproveCommentForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].label = False
             self.fields['approved'].label = 'Approve comment'
+
+
+class ContactForm(forms.ModelForm):
+    """ A form for users contact information """
+    class Meta:
+        """ Assign model and fields"""
+        model = Contact
+        fields = '__all__'
+        exclude = ('sent_on', 'user',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'name': 'Name',
+            'email_address': 'Email',
+            'tel_number': 'Tel No.',
+            'message': 'Message',
+        }
+        for field in self.fields:
+            placeholder = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].label = False

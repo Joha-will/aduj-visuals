@@ -14,5 +14,6 @@ urlpatterns = [
           name='approve_comment'),
      path('delete_comment/<int:comment_id>/', views.delete_comment,
           name='delete_comment'),
+     path('contact_form/', views.contact_form, name='contact_form'),
 
 ]
