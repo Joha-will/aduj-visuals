@@ -44,3 +44,11 @@ def edit_product(request, product_id):
         'product': product,
     }
     return render(request, 'store_management/edit_product.html', context)
+
+
+def delete_product(request, product_id):
+    """ Delete product's from the store """
+    product = get_object_or_404(Product, pk=product_id)
+    product.delete()
+    messages.info(request, 'Product deleted successfully.')
+    return redirect(reverse('products'))

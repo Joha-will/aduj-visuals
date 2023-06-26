@@ -20,7 +20,7 @@ Edit product
                     {% csrf_token %}
                     {{form | crispy }}
                     <div class="float-right">
-                        <button class="btn bg-logo-red rounded-1 text-white" type="submit"> Update Product </button>
+                        <button class="btn bg-dark text-white rounded-1" type="submit"> Update Product </button>
                         <a class="btn bg-logo-red rounded-1 text-white" href="{% url 'home' %}">Cancel</a>
                     </div>
                 </form>

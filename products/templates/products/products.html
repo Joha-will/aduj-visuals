@@ -54,7 +54,14 @@ Products
                             <a href="{{ product.get_absolute_url }}" class="btn bg-dark text-white rounded-1 w-100 mt-1"> View Product </a>
                         </li>
                         <li class="list-group-item p-0">
-                            <!--Editing for superusers-->
+
+                            {% if request.user.is_superuser %}
+                                <div class="inline-flex">
+                                    <a href="{% url 'edit_product' product.id %}" class="btn bg-dark text-white rounded-1 w-100 mt-1"> Edit Product </a>
+                
+                                    <a href="" data-toggle="modal" data-target="#staticBackdrop" class=" btn text-white bg-logo-red rounded-1 w-100 mt-1"> Delete Product </a>
+                                </div>
+                            {% endif %}
                         </li>
                     </ul>                    
                     <!-- Modal -->
@@ -74,7 +81,8 @@ Products
                                     <small>Warning! You can't undo this action.</small>
                                 </div>
                                 <div class="modal-footer">
-                                    <!--<delete products</a>-->
+                                    <a href="{% url 'delete_product' product.id %}" class=" btn bg-logo-red rounded-1">
+                                        Yes</a>
                                     <a href="{% url 'products'%}" class=" btn bg-dark text-white rounded-1"> No </a>
                                 </div>
                             </div>
