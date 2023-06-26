@@ -27,3 +27,22 @@ class ProductForm(forms.ModelForm):
             placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].label = False
+
+
+class CommentForm(forms.ModelForm):
+    """ A form for users to make commments """
+    class Meta:
+        model = Comment
+        fields = ('title', 'user_name', 'content', )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'title': 'Title',
+            'user_name': 'Username',
+            'content': 'Comment',
+        }
+        for field in self.fields:
+            placeholder = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].label = False
