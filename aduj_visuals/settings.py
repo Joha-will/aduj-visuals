@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     'profile_management',
 
     # Store Management app
-    'store_management'
+    'store_management',
 
     # Other apps
     'mathfilters',

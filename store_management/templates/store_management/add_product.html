@@ -17,15 +17,16 @@ Add product
     <div class="container-fluid">
         <h2><strong>Manage Products</strong></h2>
         <hr>
-        <h6><u> Add a product </u></h6>
+        <h6 class="text-center"><u> Add a product </u></h6>
         <div class="row">
-            <div class="col-lg-6 col-md-12">
+            <div class="col-lg-6 col-md-12 m-auto">
                 <div class="m-auto" id="store-inbox">
                     <form method="POST" action="{% url 'add_product' %}" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{form | crispy }}
                         <div class="float-right">
                             <button class="btn bg-dark rounded-1 text-white" type="submit"> Add Product </button>
+                            <a class="btn bg-logo-red rounded-1 text-white" href="{% url 'home' %}">Cancel</a>
                         </div>
                     </form>
                 </div>
