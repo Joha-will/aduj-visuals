@@ -46,3 +46,25 @@ class CommentForm(forms.ModelForm):
             placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].label = False
+
+
+class ApproveCommentForm(forms.ModelForm):
+    """ A form for admins to approve comments"""
+    class Meta:
+        model = Comment
+        fields = ('title', 'user_name', 'content', 'approved',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'title': 'title',
+            'user_name': 'Username',
+            'content': 'Comment',
+            'approved': 'Approved'
+        }
+        for field in self.fields:
+            self.fields[field].widget.attrs = {'readonly': 'readonly'}
+            placeholder = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].label = False
+            self.fields['approved'].label = 'Approve comment'

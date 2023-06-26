@@ -34,9 +34,9 @@ View comments
                                 <p class="mb-1"><strong>Prouct name: </strong>{{comment.product.name}}</p>
                                 <p class="mb-1"> <strong>Comment: </strong>{{comment.content}}</p>
                                 {% if comment.approved %}
-                                <p class="mb-1"> <strong>Comment status:</strong>Approved </p>
+                                <p class="mb-1"> <strong>Comment status:</strong> <span class="badge badge-success">Approved</span></p>
                                 {% else %}
-                                <p class="mb-1"> <strong>Comment status:</strong>Waiting to be approved</p>
+                                <p class="mb-1"> <strong>Comment status:</strong><span class="badge badge-danger">Waiting to be approved</span></p>
                                 {% endif %}
                             </a>
                             <div class="ml-auto">
