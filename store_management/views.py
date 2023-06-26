@@ -139,3 +139,16 @@ def approve_comment(request, comment_id):
         'comment': comment,
     }
     return render(request, 'store_management/approve_comment.html', context)
+
+
+@login_required
+def delete_comment(request, comment_id):
+    """ Delete Unapproved comments from the website """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners are allowed on\
+             this page!')
+        return redirect(reverse('home'))
+    comment = get_object_or_404(Comment, pk=comment_id)
+    comment.delete()
+    messages.info(request, 'Comment deleted successfully.')
+    return redirect(reverse('view_comments'))
