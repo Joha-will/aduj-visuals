@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_title %} 
+Approve comment
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid mb-auto">
+        <h2><strong>Manage Comments</strong></h2>
+        <br>
+        <h6><u> Approve comments </u></h6>
+        <hr>
+        <br>
+        <div class="row">
+            <div class="col-lg-6 col-md-12 mb-3">
+                <form method="POST" action="{% url 'approve_comment' comment.id%}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <div class="float-right">
+                        <button class="btn bg-dark text-white rounded-1" type="submit"> Approve comment </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

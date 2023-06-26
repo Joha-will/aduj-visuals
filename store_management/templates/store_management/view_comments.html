@@ -40,7 +40,7 @@ View comments
                                 {% endif %}
                             </a>
                             <div class="ml-auto">
-                                <a href=""
+                                <a href="{% url 'approve_comment' comment.id %}"
                                     class=" btn bg-dark text-white rounded-1"> Approve comment </a>
                                 <a href="" data-toggle="modal" data-target="#staticBackdrop"
                                     class=" btn bg-logo-red rounded-1 text-white">Delete comment</a>

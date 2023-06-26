@@ -10,5 +10,7 @@ urlpatterns = [
      path('add_comment/<int:product_id>/', views.add_comment,
           name='add_comment'),
      path('view_comments/', views.view_comments, name='view_comments'),
+     path('approve_comment/<int:comment_id>/', views.approve_comment,
+          name='approve_comment'),
 
 ]

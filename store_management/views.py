@@ -75,7 +75,7 @@ def delete_product(request, product_id):
 @login_required
 def add_comment(request, product_id):
     """ A view to comment on store products """
-    product = get_object_or_404(Product, id=product_id)
+    product = get_object_or_404(Product, pk=product_id)
     user_comment = None
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
@@ -113,3 +113,29 @@ def view_comments(request):
         'comments': comments,
     }
     return render(request, 'store_management/view_comments.html', context)
+
+
+@login_required
+def approve_comment(request, comment_id):
+    """ A view to approve comments on store products """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners\
+             are allowed on this page!')
+        return redirect(reverse('home'))
+    comment = get_object_or_404(Comment, pk=comment_id)
+    if request.method == 'POST':
+        form = ApproveCommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Comment has been approved.')
+            return redirect(reverse('view_comments'))
+        else:
+            messages.error(request, 'Unable to approve comment.\
+                            Please check form is valid.')
+    else:
+        form = ApproveCommentForm(instance=comment)
+    context = {
+        'form': form,
+        'comment': comment,
+    }
+    return render(request, 'store_management/approve_comment.html', context)
