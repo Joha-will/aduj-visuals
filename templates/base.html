@@ -99,7 +99,7 @@
                 <div class="dropdown-menu dropdown-menu-right">
                   {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
-                    <a class="dropdown-item clr-grey" href="">Manage Inbox</a>
+                    <a class="dropdown-item clr-grey" href="{% url 'store_inbox' %}">Manage Inbox</a>
                     <a class="dropdown-item clr-grey" href="{% url 'add_product' %}">Manage Products</a>
                     <a class="dropdown-item clr-grey" href="{% url 'view_comments' %}">Manage Comments</a>
                     <a class="dropdown-item clr-grey" href="">Manage Newsletter</a>

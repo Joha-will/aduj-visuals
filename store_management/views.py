@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from products.models import Product, Category
 from .forms import ProductForm, CommentForm, ApproveCommentForm, ContactForm
-from .models import Comment
+from .models import Comment, Contact
 
 
 @login_required
@@ -177,3 +177,19 @@ def contact_form(request):
         'contact_form': contact_form,
     }
     return render(request, 'store_management/contact_form.html', context)
+
+
+@login_required
+def store_inbox(request):
+    """ A view that renders all the store's messages """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners\
+             are allowed on this page!')
+        return redirect(reverse('home'))
+    mails = Contact.objects.all()
+    context = {
+        'mails': mails,
+    }
+    return render(request, 'store_management/store_inbox.html', context)
+
+
