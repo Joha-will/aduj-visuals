@@ -15,7 +15,7 @@
 {% block content %}
 
     <div class="container-fluid mb-auto">
-        <h2> My Profile</h2>
+        <h2><strong> My Profile</strong></h2>
         <hr>
         <br>
         <div class="row">
@@ -34,7 +34,7 @@
             </div>
             <div class="col-12 col-lg-4 col-sm-12 ml-5 p-0 m-0">
                 <fieldset>
-                    <legend><u>Order History</u> </legend>
+                    <legend><u>Order History</u></legend>
                     {% if orders %}
                     <div id="order-history">
                         {% for order in orders %}
@@ -66,7 +66,7 @@
                     </div>
                 </fieldset>
                 {% else %}
-                    <div class="">
+                    <div class="text-center">
                         <h6>No orders History</h6>
                     </div>
                 {% endif  %}

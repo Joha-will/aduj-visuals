@@ -41,20 +41,19 @@ Products
                     </div>
                     <ul class="list-group list-group-flush">
                         {% if product.category %}
-                        <li class="list-group-item p-2"><strong>Category: </strong><span class="badge badge-info">{{ product.category|capfirst }}</span>
-                        </li>
+                            <li class="list-group-item p-2"><strong>Category: </strong><span class="badge badge-info">{{ product.category|capfirst }}</span>
+                            </li>
                         {% endif %}
                         {% if product.model_name %}
-                        <li class="list-group-item p-2"><strong>Model:
-                            </strong>{{ product.model_name|capfirst }}</li>
+                            <li class="list-group-item p-2"><strong>Model:
+                                </strong>{{ product.model_name|capfirst }}</li>
                         {% endif %}
                         <li class="list-group-item p-2"><strong>Size: </strong>{{ product.size  }}</li>
                         <li class="list-group-item p-2"><strong>Price: </strong>£{{ product.price }}</li>
                         <li class="list-group-item p-2">
-                            <a href="{{ product.get_absolute_url }}" class="btn bg-dark text-white rounded-1 w-100 mt-1"> View Product </a>
+                            <a href="{% url 'product_detail' product.id %}" class="btn bg-dark text-white rounded-1 w-100 mt-1"> View Product </a>
                         </li>
                         <li class="list-group-item p-0">
-
                             {% if request.user.is_superuser %}
                                 <div class="inline-flex">
                                     <a href="{% url 'edit_product' product.id %}" class="btn bg-dark text-white rounded-1 w-100 mt-1"> Edit Product </a>

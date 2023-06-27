@@ -8,11 +8,11 @@ Add comment
 
 {% block content %}
 
-    <div class="container-fluid mb-auto ">
+    <div class="container-fluid mb-auto">
         <h2><strong>Leave a comment below</strong></h2>
         <hr>
         <br>
-        <h6 class="text-center"><u> Add a comment </u></h6>
+        <h6 class="text-center"><u> Add comment </u></h6>
         <br>
         <div class="row">
             <div class="col-lg-6 col-md-12 m-auto">
@@ -21,6 +21,7 @@ Add comment
                     {{comment_form | crispy }}
                     <div class="float-right">
                         <button class="btn bg-dark text-white rounded-1" type="submit"> Add Comment </button>
+                        <a href="{{request.META.HTTP_REFERER}}" class="btn bg-logo-red rounded-1">Cancel</a>
                     </div>
                 </form>
             </div>

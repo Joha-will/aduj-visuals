@@ -183,7 +183,7 @@
           <small>Stay updated with our lastest deals and offers.</small>
           <form method="POST" action="{% url 'newsletter' %}" class="w-20" style="max-width: 10rem;">
             {% csrf_token %}
-              <p class="mt-0">{{ form.email}}</p>
+              <p class="mt-0">{{ newsletter_form.email}}</p>
               <button type="submit" class="btn bg-logo-red rounded-1 text-white mt-0 p-1"> Subscribe</button>
           </form>
         </div>

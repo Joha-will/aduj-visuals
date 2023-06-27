@@ -40,12 +40,12 @@
             {% for item in basket_items %}
             <tr>
               <td>
-                <a href="">
+                <a href="{% url 'product_detail' item.product.id %}">
                   <img src="{{ item.product.image.url}}" width="100px" class="img-fluid" alt="{{ product.name }}">
                 </a>
               </td>
               <td>
-                <a href="">
+                <a href="{% url 'product_detail' item.product.id %}">
                   <h6>{{ item.product.name |capfirst }}</h6>
                 </a>
               </td>
@@ -65,7 +65,7 @@
                     <option value="5">5</option>
                   </select>
                 </form>
-                <a class="update-button text-white inline-flex btn bg-dark rounded-1 ">
+                <a class="update-button text-white inline-flex btn bg-dark rounded-1">
                   <small>Update</small>
                 </a>
                 <a href="{% url 'remove_product' item.product_id %}"
@@ -88,7 +88,7 @@
         </div>
         {% else %}
         <div class="row">
-          <div class="col-12 ">
+          <div class="col-12">
             <p class="ml-2">Your basket is empty </p>
           </div>
         </div>
@@ -101,6 +101,6 @@
 {% block extra_js %}
 {{ block.super }}
 
-<script src="{% static 'basket/js/basket.js' %}"></script>
+  <script src="{% static 'basket/js/basket.js' %}"></script>
     
 {% endblock %} 

@@ -222,7 +222,7 @@ def newsletter(request):
     else:
         form = NewsletterForm()
     context = {
-        'form': form,
+        'newsletter_form': form,
     }
     return context
 

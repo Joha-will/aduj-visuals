@@ -45,14 +45,16 @@ Checkout
                                 <div class="col-12">{{ order_form.country | as_crispy_field }}</div>
                             </div>
                             <div class="row">
-                                {% if request.user.is_authenticated %}
-                                <label for="save-details" > Remember my details</label>
-                                <input id="save-details" type="checkbox" name="save-details" checked>
-                                {% else %}
-                                <span class="mb-0 float-right">Login to save your details for next time <a href="{% url 'account_login' %}">Login</a>, or 
-                                    <a href="{% url 'account_signup' %}">sign up</a>
-                                </span>
-                                {% endif %}
+                                <div class="col-12">
+                                    {% if request.user.is_authenticated %}
+                                    <label for="save-details"> Remember my details</label>
+                                    <input id="save-details" type="checkbox" name="save-details" checked>
+                                    {% else %}
+                                    <span class="mb-0 float-right">Login to save your details for next time <a href="{% url 'account_login' %}">Login</a>, or 
+                                        <a href="{% url 'account_signup' %}">sign up</a>
+                                    </span>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
                     </fieldset>
@@ -85,7 +87,7 @@ Checkout
                         </div>
                         <div class="col-4 ml-auto">
                             <div class="text-center p-1">
-                                <a href="{ url 'view_basket' }"
+                                <a href="{% url 'view_basket' %}"
                                     class="btn bg-dark text-white border-dark rounded-1 w-100">
                                     Edit
                                 </a>
