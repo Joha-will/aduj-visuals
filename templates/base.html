@@ -86,16 +86,11 @@
                 <a class="nav-link btn-hover clr-grey" href="{% url 'home' %}"><i class="fa-solid fa-house"></i> <span
                     class="sr-only">(current)</span></a>
               </li>
-
-              <li class="nav-item dropdown ">
-
+              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle clr-grey" href="#" role="button" data-toggle="dropdown"
                   aria-expanded="false">
-
                   <i class="fa-solid fa-user"></i>
-
                 </a>
-
                 <div class="dropdown-menu dropdown-menu-right">
                   {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
@@ -114,9 +109,7 @@
                   {% endif %}
                 </div>
               </li>
-
               <li class="nav-item active">
-
                 <a href="{% url 'view_basket' %}" class="nav-link clr-grey btn btn-outline-secondary float-left">
                   <i class="fa-solid fa-basket-shopping"></i>
                     {% if product_count %}
@@ -177,7 +170,7 @@
           </div>
         </div>
       </div>
-      <div class="row bg-brown footer-bg-clr ">
+      <div class="row bg-brown footer-bg-clr">
         <div class="col-8 p-2 mt-auto ">
           <h4>Subscribe to our letter!</h4>
           <small>Stay updated with our lastest deals and offers.</small>

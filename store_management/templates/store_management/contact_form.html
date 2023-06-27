@@ -15,7 +15,7 @@ Contact form
         <br>
         <div class="row">
             <div class="col-lg-6 col-md-12 m-auto">
-                <form method="POST" action="{% url 'contact_form' %}">
+                <form method="POST" action="{% url 'contact_us' %}">
                     {% csrf_token %}
                     {{ contact_form | crispy }}
                     <div class="float-right">

@@ -8,6 +8,7 @@ from django.core.mail import send_mail
 
 import time
 import json
+import stripe
 
 
 class StripeWH_Handler:
@@ -93,6 +94,7 @@ class StripeWH_Handler:
                 time.sleep(1)
             if order_exists:
                 self._send_confirmation_email(order)
+                print(intent)
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]}\
                         | SUCCESS: Verified order already in database',

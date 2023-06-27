@@ -16,9 +16,93 @@ body {
     color: #4C4C4C;
 }
 
+
+header {
+    margin: 0;
+}
+
+.custom-toggler.navbar-toggler {
+
+    border-color: #C35355
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a:link {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-outline-secondary.btn {
+    padding: 0.2rem !important;
+    margin-top: 4px;
+}
+
+.btn-border {
+    border-left: 0.5px solid;
+    color: #B9B6C8 !important;
+}
+
+.btn-hover:hover {
+    text-decoration: underline #C35355 !important;
+}
+
+.logo-font {
+    font-family: 'Aclonica', sans-serif !important;
+    font-size: 2rem;
+    color: black !important;
+    font-weight: bold;
+}
+
 input[name='q']::placeholder {
     color: #CFCFCF !important;
 }
+
+/** -------------------------------------Home images section **/
+
+/** This CSS is from:
+
+Hover.css (http://ianlunn.github.io/Hover/)
+ * Version: 2.3.2
+ * Author: Ian Lunn @IanLunn
+ * Author URL: http://ianlunn.co.uk/
+ * Github: https://github.com/IanLunn/Hover 
+
+
+**/
+
+/* Grow Shadow */
+.hvr-grow-shadow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+}
+
+.hvr-grow-shadow:hover,
+.hvr-grow-shadow:focus,
+.hvr-grow-shadow:active {
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+/** ------------------------------------- End of home images section **/
 
 /** -------------------------------------Footer Section **/
 
@@ -133,4 +217,44 @@ input[name='q']::placeholder {
     background-color: #dc3545;
     border-color: #dc3545;
     border-radius: 0;
+}
+
+
+/*---------------------------- Media queries **/
+@media screen and (max-width:991px) {
+    #image-bg-1 {
+        display: none;
+    }
+
+    .nav-item a {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width:767px) {
+    #image-bg-3 {
+        display: none;
+    }
+
+    .nav-item a {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .social-link {
+        font-size: 20px;
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .nav-item a {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width:300px) {
+    .margin-rite {
+        margin:auto;
+    }
 }

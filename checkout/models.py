@@ -33,6 +33,10 @@ class Order(models.Model):
     stripe_pid = models.CharField(max_length=254, null=False, blank=False,
                                   default='')
 
+    class Meta:
+        """Order the result posted_on descending"""
+        ordering = ['-date_ordered']
+
     def generate_order_number(self):
         """ Random number generator for unique order number using UUID. """
         return uuid.uuid4().hex.upper()
