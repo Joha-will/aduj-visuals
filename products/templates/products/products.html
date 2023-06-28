@@ -29,8 +29,85 @@ Products
                 </div>
             </div>
             {% for product in products %}
+            <div class="col-lg-4" style="overflow-x:auto;">
+
+                <ul class="list-group list-group-horizontal mt-5 w-auto">
+          
+                  <li class="list-group-item bg-info">
+          
+                    <a class="text-dark" href=""> Update booking</a>
+          
+                  </li>
+          
+                  <li class="list-group-item bg-danger">
+          
+                    <a class="text-dark" data-toggle="modal" data-target="#staticBackdrop">Cancel Booking </a>
+          
+                  </li>
+          
+                </ul>
+          
+                <ul class="list-group w-auto text-dark">
+          
+                  <li class="list-group-item list-group-item-light text-dark">
+          
+                    <h4>Booking ID</h4>{{ customer.booking_id }}
+          
+                  </li>
+          
+                  <li class="list-group-item list-group-item-secondary">
+          
+                    <h4>Name</h4>{{ customer.name }}
+          
+                  </li>
+          
+                  <li class="list-group-item list-group-item-light text-dark">
+          
+                    <h4>Email</h4>{{ customer.email }}
+          
+                  </li>
+          
+                  <li class="list-group-item list-group-item-secondary">
+          
+                    <h4>No. of Perosns</h4>{{customer.no_of_persons}}
+          
+                  </li>
+          
+                  <li class="list-group-item list-group-item-light text-dark">
+          
+                    <h4>Booking Time</h4>{{customer.booking_time}}
+          
+                  </li>
+          
+                  <li class="list-group-item list-group-item-light text-dark">
+          
+                    <h4>Booking Date</h4>{{customer.booking_date}}
+          
+                  </li>
+          
+                  <li class="list-group-item list-group-item-secondary">
+          
+                    <h4>Booking Status</h4>{{customer.booking_status}}
+          
+                  </li>
+          
+                  <li class="list-group-item list-group-item-light text-dark">
+          
+                    <h4>Booked On</h4>{{customer.booked_on}}
+          
+                  </li>
+          
+                </ul>
+          
+              </div>
+
+
+
+
+
+
             <div class="col-lg-4 col-md-12 col-sm-12 mb-3 ">
-                <div class="card ml-auto mr-auto mb-3" style="max-width:400px; height: fit-content;">
+                <div class="card">
                     <a href="{% url 'product_detail' product.id %}">
                         <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}">
                     </a>
@@ -63,31 +140,31 @@ Products
                             {% endif %}
                         </li>
                     </ul>                    
-                    <!-- Modal -->
-                    <div class="modal fade mb-auto" id="staticBackdrop" data-backdrop="static"
-                        data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel"><strong>Are you sure you
-                                            want to delete this product?</strong></h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <small>Warning! You can't undo this action.</small>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="{% url 'delete_product' product.id %}" class=" btn bg-logo-red rounded-1">
-                                        Yes</a>
-                                    <a href="{% url 'products'%}" class=" btn bg-dark text-white rounded-1"> No </a>
-                                </div>
-                            </div>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade mb-auto" id="staticBackdrop" data-backdrop="static"
+                data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel"><strong>Are you sure you
+                                    want to delete this product?</strong></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <small>Warning! You can't undo this action.</small>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="{% url 'delete_product' product.id %}" class=" btn bg-logo-red rounded-1">
+                                Yes</a>
+                            <a href="{% url 'products'%}" class=" btn bg-dark text-white rounded-1"> No </a>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
             {% endfor %}
         </div>

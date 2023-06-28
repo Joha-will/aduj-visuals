@@ -27,6 +27,7 @@ class ProductForm(forms.ModelForm):
         for field in self.fields:
             placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].widget.attrs['required'] = True
             self.fields[field].label = False
 
 

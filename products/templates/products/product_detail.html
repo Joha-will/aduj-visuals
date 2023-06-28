@@ -11,10 +11,9 @@ Product detail
     <div class="container-fluid">
         <div class="row mt-5 border-bottom border-secondary">
             <div class="col-lg-5 col-md-12 p-0 text-center mb-5">
-                <div class="p-2">
-                    <a href="{{ product.image.url }}" target="_blank"> <img class="img-fluid mx-auto"
-                            alt="{{ product.name }}" src="{{ product.image.url }}"> </a>
-                </div>
+                <a href="{{ product.image.url }}" target="_blank"> <img class="card-img-top img-fluid mx-auto"
+                        alt="{{ product.name }}" src="{{ product.image.url }}" height="500"> </a>
+
             </div>
             <div class="col-lg-5 col-md-12 p-0 m-auto">
                 <h1 class="p-2"> {{product.name|capfirst}} </h1>

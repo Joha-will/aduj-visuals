@@ -1,0 +1,1 @@
+web: gunicorn aduj_visuals.wsgi:application
