@@ -29,8 +29,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-ALLOWED_HOSTS = ['aduj-visuals-02-be729c9b70ed.herokuapp.com', 'localhost']
+DEBUG = False
+ALLOWED_HOSTS = ['aduj-visuals-02-be729c9b70ed.herokuapp.com', 'localhost', '8000-johawill-adujvisuals-m8kt0b3n7iq.ws-eu101.gitpod.io']
 
 
 # Application definition

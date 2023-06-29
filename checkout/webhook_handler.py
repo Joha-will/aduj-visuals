@@ -117,7 +117,7 @@ class StripeWH_Handler:
                         stripe_pid=pid,
                     )
                     for product_id, product_quantity in json.loads(basket).items():  # noqa
-                        product = get_object_or_404(Product, id=product_id)
+                        product = Product.objects.get(id=product_id)
                         if isinstance(product_quantity, int):
                             order_item = OrderItem(
                                 order=order,
