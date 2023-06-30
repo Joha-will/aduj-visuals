@@ -8,6 +8,8 @@ html {
 
 /** -------------------------------------Padding, Margins, Text, **/
 body {
+    background: url('https://s12.gifyu.com/images/SQDq5.jpg') no-repeat center center fixed; 
+    background-size:cover;
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -15,6 +17,7 @@ body {
     font-family: 'Roboto', sans-serif;
     color: #4C4C4C;
 }
+
 
 
 header {

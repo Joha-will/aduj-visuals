@@ -14,21 +14,21 @@ Home
 
 {% block content %}
 
-    <div class="container-fluid">
+    <div class="container-fluid mb-5">
         <div class="row">
-            <div class="col-12 text-center mb-5 mt-5"> <h2 class="text-center">Shop photography today...</h2></div>
-            <div class="col-lg-3 p-1 mr-auto">
-                <img id="image-bg-1" src="" class="img-fluid hvr-grow-shadow"
-                    alt="Image of boy sitting relaxing in kingstown at a park">
-            </div>
-            <div class="col-lg-3 col-md-5 p-1 m-3 text-center">
-                <img id="image-bg-2" src="" class="img-fluid hvr-grow-shadow"
-                    alt="Image of a girl sitting on a wall of a old building">
-            </div>
-            <div class="col-lg-3 col-md-5 p-1 ml-auto">
-                <img id="image-bg-3" src="" class="img-fluid hvr-grow-shadow"
-                    alt="Image of a man sitting in the mountains of st vincent and the grenadines">
-            </div>
+            <div class="col-12 text-center mb-5 mt-5"> <h2 class="text-center text-white">Shop photography today...</h2></div>
+                <div class="col-lg-3 p-1 m-auto">
+                    <img id="image-bg-1" src="{{ MEDIA_URL }}Image of boy sitting relaxing in kingstown at a park.jpeg" class="img-fluid hvr-grow-shadow"
+                        alt="Image of boy sitting relaxing in kingstown at a park">
+                </div>
+                <div class="col-lg-3 col-md-5 p-1 m-3 text-center">
+                    <img id="image-bg-2" src="{{ MEDIA_URL }}Image of a girl sitting on a wall of a old building.jpeg" class="img-fluid hvr-grow-shadow"
+                        alt="Image of a girl sitting on a wall of a old building">
+                </div>
+                <div class="col-lg-3 col-md-5 p-1 m-auto">
+                    <img id="image-bg-3" src="{{ MEDIA_URL }}Image of a man sitting in the mountains of st vincent and the grenadines.jpeg" class="img-fluid hvr-grow-shadow"
+                        alt="Image of a man sitting in the mountains of st vincent and the grenadines">
+                </div>
         </div>
     </div>
 
