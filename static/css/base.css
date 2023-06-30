@@ -47,6 +47,10 @@ a:link {
     text-decoration: none;
 }
 
+.dropdown-toggle::after {
+    content: none;
+}
+
 .btn-outline-secondary.btn {
     padding: 0.2rem !important;
     margin-top: 4px;
@@ -119,17 +123,23 @@ Hover.css (http://ianlunn.github.io/Hover/)
 
 .social-link {
     font-size: 2rem;
-    color: #B9B6C8;
+    color: #C35355;
+    margin: auto !important;
 }
 .margin-rite {
     margin-right: 10rem;
 }
 .social-link:hover {
-    color: #C35355 !important;
+    color: #ac7f7f !important;
 }
 
 .nav-links:hover {
     color: #C35355 !important;
+}
+
+.subscribe-btn:hover {
+    background-color: #ac7f7f !important;
+
 }
 
 /* ------------------------------- Toasts section */
@@ -233,6 +243,9 @@ Hover.css (http://ianlunn.github.io/Hover/)
     .nav-item a {
         font-size: 2rem;
     }
+    .nav-link p {
+        font-size:x-small !important;
+    }
 }
 
 @media screen and (max-width:767px) {
@@ -248,12 +261,19 @@ Hover.css (http://ianlunn.github.io/Hover/)
 @media screen and (max-width:500px) {
     .social-link {
         font-size: 20px;
-        margin: 10px;
         padding: 15px;
     }
 
     .nav-item a {
         font-size: 1rem;
+    }
+}
+
+@media screen and (max-width:405px) {
+    .fnt-size {
+        font-size: small !important;
+        margin: 0;
+        padding:0%;
     }
 }
 

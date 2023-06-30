@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Aduj visuals, a Caribbean Photography store, from the island of Saint Vincent and Grenadines.">
+        <meta name="description" content="Aduj visuals, a Caribbean Photography store, from the island of Saint Vincent and the Grenadines.">
         <meta name="keywords"
           content="Photography of the Caribbean, Sunset portraits, Landscape pictures, Saint Vincent, gallery, photography, island life, Caribbean pictures,
         wedding Photographer, wedding photography, Buy photos online, Beatiful pictures, amazings Sunset, Photography of nature, Portraits, Landscapes Photo, Images, pictures, online photography">
@@ -49,47 +49,64 @@
       <div class="container-fluid mb-auto bg-grey">
 
         <nav class="row navbar navbar-expand-lg navbar-light">
+          <div class="col-12 col-lg-4">
+            <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse"
+              data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+              aria-label="Toggle navigation">
 
-          <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-            aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
 
-            <span class="navbar-toggler-icon"></span>
+            </button>
 
-          </button>
+            <a class="navbar-brand ml-3 logo-font" href="{% url 'home' %}">Aduj <span class="clr-red">
 
-          <a class="navbar-brand ml-auto logo-font" href="{% url 'home' %}">Aduj <span class="clr-red">
+                <small>Visuals</small></span></a>
+          </div>
 
-              <small>Visuals</small></span></a>
+          <div class="col-12 col-lg-4 col-md-6 mb-2">
+            <form method="GET" action="{% url 'products' %}" class="ml-50">
 
-          <form method="GET" action="{% url 'products' %}">
+              <div class="input-group w-100">
 
-            <div class="input-group w-100">
+                <input class="form-control border border-black rounded-1" type="text" name="q"
+                  placeholder="Search Photography">
+                <div class="input-group-append">
 
-              <input class="form-control border border-black rounded-1" type="text" name="q"
-                placeholder="Search Photography">
-              <div class="input-group-append">
+                  <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                    <span class="icon">
 
-                <button class="form-control btn btn-black border border-black rounded-0" type="submit">
-                  <span class="icon">
+                      <i class="fas fa-search"></i>
 
-                    <i class="fas fa-search"></i>
-
-                  </span>
-                </button>
+                    </span>
+                  </button>
+                </div>
               </div>
-            </div>
-          </form>
-          <div class="collapse navbar-collapse p-0" id="navbarTogglerDemo02">
-            <ul class="navbar-nav ml-auto">
+            </form>
+          </div>
+          <div class=" col-lg-4 col-12 collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav ml-auto d-flex justify-content-center">
               <li class="nav-item active">
-                <a class="nav-link btn-hover clr-grey" href="{% url 'home' %}"><i class="fa-solid fa-house"></i> <span
-                    class="sr-only">(current)</span></a>
+                <a class="nav-link btn-hover clr-grey" href="{% url 'home' %}">
+                  <div class="text-center">
+                    <div>
+                      <i class="fa-solid fa-house"></i> 
+                      <span class="sr-only">(current)</span>
+                    </div>
+                    <p class="my-0">Home</p>
+                  </div>
+                </a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle clr-grey" href="#" role="button" data-toggle="dropdown"
                   aria-expanded="false">
-                  <i class="fa-solid fa-user"></i>
+                  
+                  <div class="text-center">
+                    <div>
+                      <i class="fa-solid fa-user"></i> 
+                      
+                    </div>
+                    <p class="my-0">Account</p>
+                  </div>
                 </a>
                 
                 <div class="dropdown-menu dropdown-menu-right">
@@ -111,25 +128,33 @@
                 </div>
               </li>
               <li class="nav-item active">
-                <a href="{% url 'view_basket' %}" class="nav-link clr-grey btn btn-outline-secondary float-left">
-                  <i class="fa-solid fa-basket-shopping"></i>
-                    {% if product_count %}
-                      <span class="inline-flex badge badge-info">{{product_count}}</span>
-                    {% else %}
-                    {% endif %}
+                <a href="{% url 'view_basket' %}" class="nav-link clr-grey">
+
+                    <div class="text-center">
+                      <div class=" m-0">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        {% if product_count %}
+                          <span class="inline-flex badge badge-info m-0">{{product_count}}</span>
+                        {% else %}
+                        {% endif %} 
+                        
+                      </div>
+                      <p class="m-0">
+                        {% if order_total_total %}
+                            £{{order_total | floatformat:2}}
+                        {% else %}
+                            £0.00
+                        {% endif %}
+                      </p>
+                    </div>
                 </a>
               </li>
             </ul>
           </div>
         </nav>
       </div>
-      <div class="row">
-        <nav class="navbar navbar-expand-lg bg-light row">
-          <div class="collapse navbar-collapse text-center" id="navbarTogglerDemo02">
-            {% include 'includes/mobile-top-header.html' %}
-            {% include 'includes/main_nav.html' %}
-          </div>
-        </nav>
+      <div class="container-fluid">
+        {% include 'includes/main_nav.html' %}
       </div>
     </header>
 
@@ -177,14 +202,21 @@
         </div>
       </div>
       <div class="row bg-brown footer-bg-clr">
-        <div class="col-8 p-2 mt-auto ">
-          <h4>Subscribe to our letter!</h4>
-          <small>Stay updated with our lastest deals and offers.</small>
-          <form method="POST" action="{% url 'newsletter' %}" class="w-20" style="max-width: 10rem;">
-            {% csrf_token %}
-              <p class="mt-0">{{ newsletter_form.email}}</p>
-              <button type="submit" class="btn bg-logo-red rounded-1 text-white mt-0 p-1"> Subscribe</button>
-          </form>
+        <div class="col-12 p-2 mt-3 text-center">
+          <div class="row p-0 m-0">
+            <div class="col-12">
+              <h3 class="text-center"><strong>Subscribe to our letter!</strong></h3>
+              <small>Stay updated with our lastest deals and offers.</small>
+            </div>
+            <div class="col-10 col-md-6 col-lg-2 m-auto">
+              <form method="POST" action="{% url 'newsletter' %}">
+                {% csrf_token %}
+                  <p class="m-0 p-0 rounded">{{ newsletter_form|crispy}}</p>
+                  <button type="submit" class="btn bg-logo-red rounded-1 text-white m-0 p-2 w-100 subscribe-btn"> Subscribe</button>
+              </form>
+            </div>
+            
+          </div>
         </div>
         <div class="col-12 mt-auto">
           <div class="text-center">

@@ -46,25 +46,18 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
     # Home app
     'home',
-
     # Products app
     'products',
-
     # Basket app
     'basket',
-
     # Checkout app
     'checkout',
-
     # Profile Management app
     'profile_management',
-
     # Store Management app
     'store_management',
-
     # Other apps
     'mathfilters',
     # Django Crispy-Forms
