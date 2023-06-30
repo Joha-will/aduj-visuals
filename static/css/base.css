@@ -43,6 +43,10 @@ a:link {
     cursor: pointer;
 }
 
+.list-inline-item {
+    text-decoration: none;
+}
+
 .btn-outline-secondary.btn {
     padding: 0.2rem !important;
     margin-top: 4px;
