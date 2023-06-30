@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row d-flex align-items-center p-4">
+            <div class="col-lg-4 col-md-12">
+                <h1 class="text-center">404 Error</h1>
+                <hr>
+            </div>
+            <div class="col-lg-6 col-md-8 mt-3">
+                <h4 class="text-center">
+                    The page you are looking for isn't available
+                </h4>
+                <br>
+                <div>
+                    <a href="{% url 'home' %}" class=" text-center btn bg-dark text-white rounded-1 p-2">
+                        Return to home
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
