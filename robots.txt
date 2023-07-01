@@ -1,0 +1,7 @@
+User-agent: *
+
+Disallow: /store_management/
+
+Disallow: /profile_management/
+
+Sitemap: "https://aduj-visuals-02-be729c9b70ed.herokuapp.com/sitemap.xml
