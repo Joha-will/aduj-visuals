@@ -23,7 +23,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     """ Product model """
-    name = models.CharField(max_length=254,)
+    name = models.CharField(max_length=254)
     model_name = models.CharField(max_length=254, blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.SET_NULL,
                                  null=True, blank=True,)

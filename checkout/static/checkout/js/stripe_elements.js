@@ -67,7 +67,7 @@ card.addEventListener('change', function (e) {
     errorMsg.textContent = '';
   }
 
-})
+});
 
 
 // Form Submit js
@@ -173,7 +173,7 @@ form.addEventListener('submit', function (event) {
 
     location.reload();
 
-  })
+  });
 
   
 });

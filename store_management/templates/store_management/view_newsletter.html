@@ -8,13 +8,13 @@ Newsletter
 
 {% block content %}
 
-    <div class="container-fluid mb-auto">
-        <h2><strong>Manage Newsletter</strong></h2>
+    <div class="container-fluid mb-3">
+        <h2 class="text-white"><strong>Manage Newsletter</strong></h2>
         <hr>
         <div class="row">
             <div class="col-12">
                 <fieldset>
-                    <legend class="text-center"><u>Subscribers</u></legend>
+                    <legend class="text-center text-white"><u>Subscribers</u></legend>
                     {% if subscribers %}
                     <div id="store-inbox" class="m-auto">
                         {% for subscriber in subscribers %}
@@ -25,7 +25,7 @@ Newsletter
                             </li>
                             <li class="ml-auto">
                                 <a href="" data-toggle="modal" data-target="#staticBackdrop"
-                                    class=" btn bg-logo-red rounded-1 p-1">Unsubscribe </a>
+                                    class=" btn bg-logo-red text-white rounded-1 p-1">Unsubscribe </a>
                             </li>
                         </ul>
                         <!-- Modal -->

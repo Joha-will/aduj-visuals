@@ -14,13 +14,13 @@
 
 {% block content %}
 
-    <div class="container-fluid mb-auto">
-        <h2><strong>Manage Inbox</strong></h2>
+    <div class="container-fluid mb-3">
+        <h2 class="text-white"><strong>Manage Inbox</strong></h2>
         <hr>
         <div class="row">
             <div class="col-12">
                 <fieldset>
-                    <legend class="text-center"><u>Messages</u> </legend>
+                    <legend class="text-center text-white"><u>Messages</u> </legend>
                     <div id="store-inbox" class="m-auto">
                         {% for mail in mails %}
                         <div class="list-group mb-3">
@@ -35,7 +35,7 @@
                             </a>
                             <div class="ml-auto">
                                 <a href="" data-toggle="modal" data-target="#staticBackdrop"
-                                    class=" btn bg-logo-red rounded-1"> Delete message </a>
+                                    class=" btn bg-logo-red rounded-1 text-white"> Delete message </a>
                             </div>
                         </div>
                         <!-- Modal -->

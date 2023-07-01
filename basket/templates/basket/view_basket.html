@@ -17,18 +17,51 @@
 
 {% block content %}
 
-  <div class="container-fluid">
+  <div class="container-fluid text-white">
     <div class="row">
       <div class="col-12">
-        <h1 class="h5"> Your Basket </h1>
+        <h1 class="h5 mt-3"> Your Basket </h1>
         <br>
         <hr>
       </div>
       {% if basket_items %}
-      <div class="col-lg-12 mb-3 text-center ">
-        <table class="table table-borderless table-responsive">
+      <div class="d-block d-md-none text-center">
+        <div class="row">
+          <div class="col mb-3">
+            {% include "basket/checkout_buttons.html" %}
+          </div>
+        </div>
+
+        {% for item in basket_items %}
+        <div class="row">
+          <div class="col-12 col-sm-6 mb-2">
+            {% include "basket/product_image.html" %}
+          </div>
+          <div class="col-12 col-sm-6 mb-2">
+            {% include "basket/product_info.html" %}
+          </div>
+          <div class="col-12 col-sm-6 order-sm-last">
+            <p class="my-0">Price Each: £{{ item.product.price }}</p>
+
+          </div>
+          <div class="col-12 col-sm-6">
+            {% include "basket/quantity_form.html" %}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <hr>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="table-responsive rounded d-none d-md-block">
+        {% for item in basket_items %}
+        <table class="table table-sm table-borderless m-auto">
+          
           <thead>
-            <tr>
+            <tr class="text-white">
               <th scope="col"></th>
               <th scope="col">Product</th>
               <th scope="col">Price</th>
@@ -37,54 +70,42 @@
             </tr>
           </thead>
           <tbody>
-            {% for item in basket_items %}
+            
             <tr>
-              <td>
-                <a href="{% url 'product_detail' item.product.id %}">
-                  <img src="{{ item.product.image.url}}" width="100px" class="img-fluid" alt="{{ product.name }}">
-                </a>
+              <td class="p-3 w-25">
+
+                {% include 'basket/product_image.html' %}
+
               </td>
-              <td>
-                <a href="{% url 'product_detail' item.product.id %}">
-                  <h6>{{ item.product.name |capfirst }}</h6>
-                </a>
+
+              <td class="py-3 text-white">
+                {% include 'basket/product_info.html' %}
+
               </td>
-              <td>
-                <p> £{{ item.product.price }}</p>
+              <td class="py-3">
+
               </td>
-              <td class="py-3 w-25">
-                <form class="form update-form" method="POST" action="{% url 'update_basket' item.product_id %}">
-                  <label>Qty:</label>
-                  {% csrf_token %}
-                  <select id="selected_{{product.id}}" name="quantity">
-                    <option selected> {{item.quantity}}</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                  </select>
-                </form>
-                <a class="update-button text-white inline-flex btn bg-dark rounded-1">
-                  <small>Update</small>
-                </a>
-                <a href="{% url 'remove_product' item.product_id %}"
-                  class="remove-button text-white inline-flex btn bg-logo-red rounded-1"
-                  data-id="{{ item.product_id }}"><small>Remove</small>
-                </a>
+              <td class="py-3 w-25 text-white">
+                {% include 'basket/quantity_form.html' %}
+
               </td>
-              <td>
+              <td class="py-3 text-white">
                 <p> £{{ item.product.price | mul:item.quantity }}</p>
+
               </td>
             </tr>
           </tbody>
         </table>
-        {% endfor %}
+        <div>
+          
+        </div>
         <hr>
-        <div class="col-12 mt-2 mb-auto text-right">
+        {% endfor %}
+        <div class="col-12 mt-2 mb-3 text-right">
           <a href="{% url 'checkout' %}" class="p-2 btn bg-dark text-white border-dark rounded-1">Proceed to
-            check out &nbsp; <i class="fa-solid fa-arrow-right"></i>
+            check out &nbsp; <i class="fa-solid fa-lock"></i>
           </a>
+
         </div>
         {% else %}
         <div class="row">

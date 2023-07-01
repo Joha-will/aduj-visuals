@@ -15,11 +15,11 @@ Checkout
 {% block content %}
 
     <div class="container-fluid mb-auto">
-        <h2> Checkout</h2>
+        <h2 class="text-white mt-2"> Checkout</h2>
         <hr>
         <br>
         <div class="row">
-            <div class="col-lg-6 col-md-12 mb-3">
+            <div class="col-lg-6 col-md-12 mb-5 text-white">
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
                     <fieldset>
@@ -62,24 +62,28 @@ Checkout
                         <legend>Payment</legend>
                         <div class="container">
                             <div class="row">
-                                <div id="payment-element" class="col-12 border-bottom p-1 ml-1">
-                                    <!-- Elements will create form elements here -->
+                                <div class="col-12">
+                                    <div id="payment-element">
+                                        <!-- Elements will create form elements here -->
+                                    </div>
+                                    <br><br>
+                                    <div id="error-message">
+                                        <!-- Display error message to your customers here -->
+                                    </div>
+                                    <!-- Pass the client secret to the view so we can get the payment intent id -->
+                                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                                    <button id="submit-button" type="submit"
+                                        class="p-2 btn bg-dark text-white border-dark rounded-1 float-right">Complete
+                                        Order</button>
+
                                 </div>
-                                <br><br>
-                                <div id="error-message">
-                                    <!-- Display error message to your customers here -->
-                                </div>
-                                <!-- Pass the client secret to the view so we can get the payment intent id -->
-                                <input type="hidden" value="{{ client_secret }}" name="client_secret">
-                                <button id="submit-button" type="submit"
-                                    class="p-1 btn bg-dark text-white border-dark rounded-1 ml-auto">Complete
-                                    Order</button>
+                                
                             </div>
                         </div>
                     </fieldset>
                 </form>
             </div>
-            <div class="col-lg-4 col-sm-12 ml-lg-auto ">
+            <div class="col-lg-4 col-sm-12 ml-lg-auto text-white mb-3">
                 <fieldset>
                     <div class="row">
                         <div class="col-5 mr-auto">

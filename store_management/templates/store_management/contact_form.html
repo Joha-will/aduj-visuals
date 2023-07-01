@@ -8,10 +8,10 @@ Contact form
 
 {% block content %}
 
-    <div class="container-fluid mb-auto">
-        <h2><strong>Leave a comment below</strong></h2>
+    <div class="container-fluid mb-3">
+        <h2 class="text-white"><strong>Leave a comment below</strong></h2>
         <hr>
-        <h6 class="text-center"><u> Contact Us </u></h6>
+        <h6 class="text-center text-white"><u> Contact Us </u></h6>
         <br>
         <div class="row">
             <div class="col-lg-6 col-md-12 m-auto">
@@ -20,7 +20,7 @@ Contact form
                     {{ contact_form | crispy }}
                     <div class="float-right">
                         <button class="btn bg-dark text-white rounded-1" type="submit"> Submit </button>
-                        <a href="{{request.META.HTTP_REFERER}}" class="btn bg-logo-red rounded-1">Cancel</a>
+                        <a href="{{request.META.HTTP_REFERER}}" class="btn bg-logo-red rounded-1 text-white">Cancel</a>
                     </div>
                 </form>
             </div>

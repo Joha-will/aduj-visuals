@@ -1,5 +1,5 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
-
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from products.models import Product
 from .forms import (ProductForm, CommentForm, ApproveCommentForm, ContactForm,
@@ -7,7 +7,7 @@ from .forms import (ProductForm, CommentForm, ApproveCommentForm, ContactForm,
 from .models import Comment, Contact, Newsletter
 
 
-# @login_required
+@login_required
 def add_product(request):
     """ Add's products to the store """
     if not request.user.is_superuser:
@@ -31,7 +31,7 @@ def add_product(request):
     return render(request, 'store_management/add_product.html', context)
 
 
-#@login_required
+@login_required
 def edit_product(request, product_id):
     """ Edit product's in the store """
     if not request.user.is_superuser:
@@ -60,7 +60,7 @@ def edit_product(request, product_id):
     return render(request, 'store_management/edit_product.html', context)
 
 
-#@login_required
+@login_required
 def delete_product(request, product_id):
     """ Delete product's from the store """
     if not request.user.is_superuser:
@@ -73,7 +73,7 @@ def delete_product(request, product_id):
     return redirect(reverse('products'))
 
 
-#@login_required
+@login_required
 def add_comment(request, product_id):
     """ A view to comment on store products """
     product = get_object_or_404(Product, pk=product_id)
@@ -102,7 +102,7 @@ def add_comment(request, product_id):
     return render(request, 'store_management/add_comment.html', context)
 
 
-#@login_required
+@login_required
 def view_comments(request):
     """ A view that renders users comments"""
     if not request.user.is_superuser:
@@ -116,7 +116,7 @@ def view_comments(request):
     return render(request, 'store_management/view_comments.html', context)
 
 
-#@login_required
+@login_required
 def approve_comment(request, comment_id):
     """ A view to approve comments on store products """
     if not request.user.is_superuser:
@@ -142,7 +142,7 @@ def approve_comment(request, comment_id):
     return render(request, 'store_management/approve_comment.html', context)
 
 
-#@login_required
+@login_required
 def delete_comment(request, comment_id):
     """ Delete Unapproved comments from the website """
     if not request.user.is_superuser:
@@ -155,7 +155,7 @@ def delete_comment(request, comment_id):
     return redirect(reverse('view_comments'))
 
 
-#@login_required
+@login_required
 def contact_us(request):
     """ Contact form view """
     contact_form = ContactForm()
@@ -180,7 +180,7 @@ def contact_us(request):
     return render(request, 'store_management/contact_form.html', context)
 
 
-#@login_required
+@login_required
 def store_inbox(request):
     """ A view that renders all the store's messages """
     if not request.user.is_superuser:
@@ -194,7 +194,7 @@ def store_inbox(request):
     return render(request, 'store_management/store_inbox.html', context)
 
 
-#@login_required
+@login_required
 def delete_message(request, message_id):
     """ Delete messages from the store's inbox"""
     if not request.user.is_superuser:
@@ -227,7 +227,7 @@ def newsletter(request):
     return context
 
 
-#@login_required
+@login_required
 def view_newsletter(request):
     """ A view that renders users comments"""
     if not request.user.is_superuser:
@@ -241,7 +241,7 @@ def view_newsletter(request):
     return render(request, 'store_management/view_newsletter.html', context)
 
 
-#@login_required
+@login_required
 def delete_subscriber(request, email_id):
     """ Delete messages from the store's inbox """
     if not request.user.is_superuser:

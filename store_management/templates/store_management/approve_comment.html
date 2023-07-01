@@ -8,14 +8,14 @@ Approve comment
 
 {% block content %}
 
-    <div class="container-fluid mb-auto">
-        <h2><strong>Manage Comments</strong></h2>
+    <div class="container-fluid mb-3">
+        <h2 class="text-white"><strong>Manage Comments</strong></h2>
         <br>
-        <h6><u> Approve comments </u></h6>
+        <h6 class="text-white"><u> Approve comments </u></h6>
         <hr>
         <br>
         <div class="row">
-            <div class="col-lg-6 col-md-12 mb-3">
+            <div class="col-lg-6 col-md-12 mb-3 text-white">
                 <form method="POST" action="{% url 'approve_comment' comment.id%}" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{form|crispy}}

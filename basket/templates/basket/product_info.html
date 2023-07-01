@@ -1,0 +1,4 @@
+<a href="{% url 'product_detail' item.product.id %}" class="text-white">
+    <h4>{{ item.product.name |capfirst }}</h4>
+</a>
+<p> £{{ item.product.price }}</p>

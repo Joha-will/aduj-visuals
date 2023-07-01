@@ -86,5 +86,4 @@ class OrderItem(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return 'Order Item # ' + str(self.order.order_number) + ' with '\
-         + str(self.product.name)
+        return f' {self.product.name} on order {self.order.order_number}'
