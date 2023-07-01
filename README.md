@@ -74,7 +74,7 @@ Users are also able to sign up to the websites newsletter created using a custom
 
 The website uses Heroku and ElephantSQL Postgres relation database to store data. The project is consist of 8 models in total. The models are, Contact model, Newsletter model, Comment model, UserProfile model, Product model, Category model, OrderItem model and the Order model. These models are the key components of the website business goals and they also play a big role in improving the user experience. 
 
-[Database Schema]([https://github.com/Joha-will/Portfolio-Project-5-E-commerce-Store/blob/main/media/340704067_186927914193896_3958745236801490948_n%20(1).png](https://github.com/Joha-will/aduj-visuals/blob/main/media/Screenshot%20(62).png))
+[Database Schema](https://github.com/Joha-will/aduj-visuals/blob/main/media/Screenshot%20(62).png)
 
 #### **Fonts**
 
