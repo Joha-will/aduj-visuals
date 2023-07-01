@@ -74,7 +74,7 @@ Users are also able to sign up to the websites newsletter created using a custom
 
 The website uses Heroku and ElephantSQL Postgres relation database to store data. The project is consist of 8 models in total. The models are, Contact model, Newsletter model, Comment model, UserProfile model, Product model, Category model, OrderItem model and the Order model. These models are the key components of the website business goals and they also play a big role in improving the user experience. 
 
-[Database Schema](https://github.com/Joha-will/Portfolio-Project-5-E-commerce-Store/blob/main/media/340704067_186927914193896_3958745236801490948_n%20(1).png)
+[Database Schema]([https://github.com/Joha-will/Portfolio-Project-5-E-commerce-Store/blob/main/media/340704067_186927914193896_3958745236801490948_n%20(1).png](https://github.com/Joha-will/aduj-visuals/blob/main/media/Screenshot%20(62).png))
 
 #### **Fonts**
 
@@ -126,7 +126,7 @@ The basket icon shows how many products that are in the basket at one time. This
 **Logo** 
 - This website has a logo which can be seen across all pages and it is full responsive. Click the link below to view the website logo.
 
-[Image of website's Logo]()
+[Image of website's Logo](https://github.com/Joha-will/aduj-visuals/blob/main/media/Screenshot%202023-07-01%20at%2011.10.40.png)
 
 **Basket**
 
@@ -141,9 +141,8 @@ If there is no products currently in the basket a message is displayed that stat
 
 The products sold by the gallery are all shown on this page. Every product has an image name, category, model, size and price. There is a view product button which takes you to the product detail page to view the item in a bigger display. 
 
-[Image of Nav-bar Status]()
+[Image of Nav-bar Status](https://github.com/Joha-will/aduj-visuals/blob/main/media/Screenshot%202023-07-01%20at%2011.12.32.png)
 
-[Image of Mobile View Nav-bar Status]()
 
 
 **Footer**
@@ -167,7 +166,7 @@ The order history displays a table of all the previous orders created by the use
 
 - The several page has a Modal which gets toggles when a user tries to delete/cancel a remove information from the website. The Modal challenges the user by asking the user to confirm that they want to delete something.
 
-[Image of website's Update Checkout Form]()
+[Image of website's Update Checkout Form](https://github.com/Joha-will/aduj-visuals/blob/main/media/Screenshot%202023-07-01%20at%2011.17.31.png)
 
 **Contact us page**
 - The Contact us page has a form which alllows customers to send an email to the website if they have any problems or questions.
