@@ -34,13 +34,29 @@ My plan of action was to build and produce a website that would be the most usef
 
 - People from all around the world. 
 
+- People with an eye for photograpy.
+
+Other potential audience would be:
+
+- People in need of a photographer for special events.
+
+- Someone looking for a personal photographer.
+
+- Likemind photographers.
+
+- Photographers looking to start a parntership
+
+- Busniesses looking for a photographer for the company.
+
+The most important thing is getting to showcase great photograpy and capturing the great moments forever.
+
 ---
 
 ##  **Marketing**
 
 **Plan**
 
-Aduj Visuals website is a business to customer e-commerce platform, created with the aim for users to be able to purchase products as well as enable users to gain access to the portfolio. 
+Aduj Visuals website is a business to customer e-commerce platform, created with the main aim for users to be able to purchase products as well as enable users to gain access to the portfolio. Other business oppotunites such as personally photograpy for companies as well as individuals.
 
 To increase sales I implemented a marketing plan to ensure the website and photographs reaches a wider audience. I created a Facebook page as a marketing technique which will exhibit new photographs, information and news that is relevant to the website. 
 
