@@ -3,7 +3,7 @@
 ---
 
 ## **Introduction**
-Welcome to my final project, ecommerce applications. This project was inspired by my eldest brothers passion for photography. Which gave me the inspiration to create a website for his photographs so that they can be accessed by different users. This will then enable my brothers photographs to reach a wider audience and enable users to purchase copies of his photography.
+Welcome to my final project, ecommerce applications. This project was inspired by my eldest brothers passion for photography. Which gave me the inspiration to create a website for his photographs so that they can be accessed by different users. This will then enable my brothers photographs to reach a wider audience and give users to the ability to purchase copies of his photography.
 
 In this README I will detail the steps I took to develop and create this project, with the use of  screen photos, images, links, charts and more.
 
@@ -11,7 +11,7 @@ This project is for educational purposes only.
 
 Thank you for viewing my project.
 
-I hope you find the application useful!
+<img width="991" alt="Screenshot 2024-03-03 at 21 55 28" src="https://github.com/Joha-will/Aduj-Visuals_Portfolio-Project-5-E-commerce/assets/98041941/13142f13-2ef6-440f-90e2-f30766c6e365">
 
 [Live Site](https://aduj-visuals-02-be729c9b70ed.herokuapp.com/)
 
